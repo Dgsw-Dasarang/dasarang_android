@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "dasarang"
-include ':presentation'
-include ':data'
-include ':domain'
+include(":presentation")
+include(":data")
+include(":domain")
