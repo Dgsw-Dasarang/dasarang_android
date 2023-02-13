@@ -3,26 +3,186 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="vm"
-            type="co.dasa.dasarang.features.news.viewmodel.NewsViewModel" />
+            type="co.dasa.dasarang.features.myInfo.viewmodel.MyInfoViewModel" />
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_app_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="@{() -> vm.showToast()}"
-        android:text="@string/title_info"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/edit_info_layout"
+            android:layout_width="0dp"
+            android:layout_height="248dp"
+            android:background="@drawable/info_blue_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_profile"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="44dp"
+                android:src="@drawable/user_profile"
+                android:onClick="@{() -> vm.showToast()}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_user_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="kms05"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_profile" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_edit_info"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/edit_btn_background"
+                android:text="수정"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_user_id" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/iv_call"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="28dp"
+            android:src="@drawable/ic_round_call"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_info_layout" />
+
+        <TextView
+            android:id="@+id/tv_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="전화번호"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toBottomOf="@id/iv_call"
+            app:layout_constraintStart_toEndOf="@id/iv_call"
+            app:layout_constraintTop_toTopOf="@id/iv_call" />
+
+        <TextView
+            android:id="@+id/tv_phoneNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="010-1234-5678"
+            android:textColor="@color/dark_gray"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/tv_call"
+            app:layout_constraintTop_toBottomOf="@id/tv_call" />
+
+        <ImageView
+            android:id="@+id/iv_call_line"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/info_area_line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_phoneNum" />
+
+        <ImageView
+            android:id="@+id/iv_address"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/ic_round_fmd_good"
+            app:layout_constraintStart_toStartOf="@id/iv_call"
+            app:layout_constraintTop_toBottomOf="@id/iv_call_line" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="주소"
+            android:textColor="@color/gray"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_address"
+            app:layout_constraintStart_toEndOf="@id/iv_address"
+            app:layout_constraintTop_toTopOf="@id/iv_address" />
+
+        <TextView
+            android:id="@+id/tv_user_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="대구광역시 구지면"
+            android:textColor="@color/dark_gray"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/tv_address"
+            app:layout_constraintTop_toBottomOf="@id/tv_address" />
+
+        <ImageView
+            android:id="@+id/iv_address_line"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="18dp"
+            android:src="@drawable/info_area_line"
+            app:layout_constraintEnd_toEndOf="@id/iv_call_line"
+            app:layout_constraintStart_toStartOf="@id/iv_call_line"
+            app:layout_constraintTop_toBottomOf="@id/tv_user_address" />
+
+        <ImageView
+            android:id="@+id/iv_birth"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/ic_round_cake"
+            app:layout_constraintStart_toStartOf="@id/iv_call"
+            app:layout_constraintTop_toBottomOf="@id/iv_address_line" />
+
+        <TextView
+            android:id="@+id/tv_birth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="생년월일"
+            android:textColor="@color/gray"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_birth"
+            app:layout_constraintStart_toEndOf="@id/iv_birth"
+            app:layout_constraintTop_toTopOf="@id/iv_birth" />
+
+        <TextView
+            android:id="@+id/tv_user_birth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="2005년 10월 12일"
+            android:textColor="@color/dark_gray"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/tv_birth"
+            app:layout_constraintTop_toBottomOf="@id/tv_birth" />
+
+        <ImageView
+            android:id="@+id/iv_birth_line"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="18dp"
+            app:layout_constraintEnd_toEndOf="@id/iv_call_line"
+            app:layout_constraintStart_toStartOf="@id/iv_call_line"
+            app:layout_constraintTop_toBottomOf="@id/tv_user_birth" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

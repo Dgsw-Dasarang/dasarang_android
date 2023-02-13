@@ -7,11 +7,16 @@
     <fragment
         android:id="@+id/main_plaza"
         android:name="co.dasa.dasarang.features.plaza.fragment.PlazaFragment"
-        android:label="PlazaFragment"/>
+        android:label="PlazaFragment" />
 
     <fragment
         android:id="@+id/main_news"
         android:name="co.dasa.dasarang.features.news.fragment.NewsFragment"
-        android:label="NewsFragment"/>
+        android:label="NewsFragment" />
+
+    <fragment
+        android:id="@+id/main_info"
+        android:name="co.dasa.dasarang.features.myInfo.fragment.MyInfoFragment"
+        android:label="MyInfoFragment" />
 
 </navigation>
