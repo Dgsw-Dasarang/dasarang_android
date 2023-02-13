@@ -9,5 +9,9 @@
         android:name="co.dasa.dasarang.features.plaza.fragment.PlazaFragment"
         android:label="PlazaFragment"/>
 
+    <fragment
+        android:id="@+id/main_news"
+        android:name="co.dasa.dasarang.features.news.fragment.NewsFragment"
+        android:label="NewsFragment"/>
 
 </navigation>
