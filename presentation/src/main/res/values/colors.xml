@@ -20,4 +20,6 @@
     <color name="light_gray">#FFDBDBDB</color>
     <color name="light">#FFEFEFEF</color>
 
+    <color name="background">#FFFAFBFF</color>
+
 </resources>
