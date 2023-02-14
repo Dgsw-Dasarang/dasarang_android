@@ -190,6 +190,7 @@
             android:id="@+id/btn_logout"
             android:text="로그아웃"
             android:textColor="@color/white"
+            android:onClick="@{() -> vm.logout()}"
             android:background="@drawable/logout_btn_background"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
