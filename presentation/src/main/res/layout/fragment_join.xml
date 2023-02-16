@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="vm"
             type="co.dasa.dasarang.features.auth.join.viewmodel.JoinViewModel" />
@@ -9,7 +11,33 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+        <TextView
+            android:id="@+id/tv_hello"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="150dp"
+            android:text="반가워요,"
+            android:textColor="@color/black"
+            android:textSize="38sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_app_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="다사랑 입니다"
+            android:textColor="@color/black"
+            android:textSize="42sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/tv_hello"
+            app:layout_constraintTop_toBottomOf="@id/tv_hello" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
