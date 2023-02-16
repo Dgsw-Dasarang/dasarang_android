@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="29dp"
             android:layout_marginTop="12dp"
+            android:fontFamily="@font/pretendard_bold"
             android:onClick="@{() -> vm.showToast()}"
             android:text="다사랑"
             android:textColor="@color/black"
@@ -32,6 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="9dp"
+            android:fontFamily="@font/pretendard_regular"
             android:text="kms05"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@id/tv_app_title"
@@ -50,11 +52,11 @@
 
         <ImageView
             android:id="@+id/iv_banner"
-            android:layout_width="0dp"
+            android:layout_width="350dp"
             android:layout_height="180dp"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="16dp"
-            android:scaleType="centerInside"
+            android:scaleType="center"
             android:src="@drawable/example_banner"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,25 +66,214 @@
             android:id="@+id/tv_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/pretendard_medium"
             android:text="카테고리"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/iv_banner"
             app:layout_constraintTop_toBottomOf="@id/iv_banner" />
 
-        <LinearLayout
-            android:id="@+id/table_category"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginVertical="24dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/iv_banner"
-            app:layout_constraintStart_toStartOf="@id/iv_banner"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/new_layout"
+            android:layout_width="166dp"
+            android:layout_height="114dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/news_list_background"
+            android:onClick="@{() -> vm.moveScreen(0)}"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_category">
 
-        </LinearLayout>
+            <ImageView
+                android:id="@+id/iv_new_news"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="22dp"
+                android:src="@drawable/light"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_new_news"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/pretendard_regular"
+                android:text="새 소식"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_new_news" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/edu_layout"
+            android:layout_width="166dp"
+            android:layout_height="114dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/news_list_background"
+            android:onClick="@{() -> vm.moveScreen(1)}"
+            app:layout_constraintStart_toEndOf="@id/new_layout"
+            app:layout_constraintTop_toTopOf="@id/new_layout">
+
+            <ImageView
+                android:id="@+id/iv_edu_news"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="22dp"
+                android:src="@drawable/building"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_edu_news"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/pretendard_regular"
+                android:text="교육청 소식"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_edu_news" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/sch_layout"
+            android:layout_width="166dp"
+            android:layout_height="114dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/news_list_background"
+            android:onClick="@{() -> vm.moveScreen(2)}"
+            app:layout_constraintStart_toStartOf="@id/new_layout"
+            app:layout_constraintTop_toBottomOf="@id/new_layout">
+
+            <ImageView
+                android:id="@+id/iv_sch_news"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="22dp"
+                android:src="@drawable/school"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_sch_news"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/pretendard_regular"
+                android:text="학교별 소식"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_sch_news" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/academy_layout"
+            android:layout_width="166dp"
+            android:layout_height="114dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/news_list_background"
+            android:onClick="@{() -> vm.moveScreen(3)}"
+            app:layout_constraintStart_toEndOf="@id/sch_layout"
+            app:layout_constraintTop_toTopOf="@id/sch_layout">
+
+            <ImageView
+                android:id="@+id/iv_academy_news"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="22dp"
+                android:src="@drawable/academy"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_academy_news"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/pretendard_regular"
+                android:text="학원별 소식"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_academy_news" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/kid_layout"
+            android:layout_width="166dp"
+            android:layout_height="114dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/news_list_background"
+            android:onClick="@{() -> vm.moveScreen(4)}"
+            app:layout_constraintStart_toStartOf="@id/new_layout"
+            app:layout_constraintTop_toBottomOf="@id/sch_layout">
+
+            <ImageView
+                android:id="@+id/iv_kid_news"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="22dp"
+                android:src="@drawable/kid"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_kid_news"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/pretendard_regular"
+                android:text="유치원 소식"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_kid_news" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/child_layout"
+            android:layout_width="166dp"
+            android:layout_height="114dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/news_list_background"
+            android:onClick="@{() -> vm.moveScreen(5)}"
+            app:layout_constraintStart_toEndOf="@id/kid_layout"
+            app:layout_constraintTop_toTopOf="@id/kid_layout">
+
+            <ImageView
+                android:id="@+id/iv_child_news"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="22dp"
+                android:src="@drawable/child"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_child_news"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/pretendard_regular"
+                android:text="유치원 소식"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_child_news" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
