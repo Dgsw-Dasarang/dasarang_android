@@ -1,6 +1,9 @@
 package co.dasa.dasarang.features.auth.join.fragment
 
+import android.view.View
 import android.widget.Toast
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import co.dasa.dasarang.R
@@ -25,6 +28,8 @@ class JoinFragment : BaseFragment<FragmentJoinBinding, JoinViewModel>(R.layout.f
         when (event) {
             is JoinViewModel.Event.Search -> search()
             is JoinViewModel.Event.Join -> join()
+            is JoinViewModel.Event.BusinessJoin -> business()
+            is JoinViewModel.Event.UserJoin -> user()
         }
     }
 
@@ -37,5 +42,17 @@ class JoinFragment : BaseFragment<FragmentJoinBinding, JoinViewModel>(R.layout.f
         //TODO 회원가입 데이터 처리
         //임시로 화면만 넘김
         findNavController().navigate(R.id.action_joinFragment_to_loginFragment)
+    }
+
+    private fun business() {
+        binding.businessGroup.visibility = View.VISIBLE
+        binding.tvBusiness.visibility = View.GONE
+        binding.tvUser.visibility = View.VISIBLE
+    }
+
+    private fun user() {
+        binding.businessGroup.visibility = View.GONE
+        binding.tvBusiness.visibility = View.VISIBLE
+        binding.tvUser.visibility = View.GONE
     }
 }

@@ -82,18 +82,62 @@
                 app:layout_constraintStart_toStartOf="@id/et_user_id"
                 app:layout_constraintTop_toBottomOf="@id/et_user_pw" />
 
-            <TextView
-                android:id="@+id/tv_join"
+            <LinearLayout
+                android:id="@+id/menu_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="41dp"
-                android:fontFamily="@font/pretendard_regular"
-                android:onClick="@{() -> vm.join()}"
-                android:text="회원가입"
-                android:textSize="12sp"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btn_login" />
+                app:layout_constraintTop_toBottomOf="@id/btn_login">
+
+                <TextView
+                    android:id="@+id/tv_search_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:onClick="@{() -> vm.showToast()}"
+                    android:text="아이디 찾기"
+                    android:textColor="@color/gray"
+                    android:textSize="12sp" />
+
+                <View
+                    android:id="@+id/line0"
+                    android:layout_width="1dp"
+                    android:layout_height="12dp"
+                    android:layout_marginStart="6dp"
+                    android:background="@color/gray" />
+
+                <TextView
+                    android:id="@+id/tv_search_pw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:onClick="@{() -> vm.showToast()}"
+                    android:text="비밀번호 찾기"
+                    android:textColor="@color/gray"
+                    android:textSize="12sp" />
+
+                <View
+                    android:id="@+id/line1"
+                    android:layout_width="1dp"
+                    android:layout_height="12dp"
+                    android:layout_marginStart="6dp"
+                    android:background="@color/gray" />
+
+                <TextView
+                    android:id="@+id/tv_join"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:onClick="@{() -> vm.join()}"
+                    android:text="회원가입"
+                    android:textColor="@color/gray"
+                    android:textSize="12sp" />
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

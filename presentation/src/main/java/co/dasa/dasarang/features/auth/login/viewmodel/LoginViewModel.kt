@@ -2,6 +2,7 @@ package co.dasa.dasarang.features.auth.login.viewmodel
 
 import androidx.lifecycle.viewModelScope
 import co.dasa.dasarang.base.BaseViewModel
+import co.dasa.dasarang.features.auth.join.viewmodel.JoinViewModel
 import co.dasa.dasarang.features.myInfo.viewmodel.MyInfoViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -23,6 +24,10 @@ class LoginViewModel @Inject constructor() : BaseViewModel() {
         event(Event.Join)
     }
 
+    fun showToast() {
+        event(Event.ShowToast("준비 중인 기능입니다"))
+    }
+
     private fun event(event: Event) = viewModelScope.launch {
         _eventFlow.emit(event)
     }
@@ -31,5 +36,7 @@ class LoginViewModel @Inject constructor() : BaseViewModel() {
         object Login: Event()
 
         object Join: Event()
+
+        data class ShowToast(val text: String): Event()
     }
 }

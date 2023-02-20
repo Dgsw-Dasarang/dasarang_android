@@ -27,6 +27,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(R.layou
         when (event) {
             is LoginViewModel.Event.Login -> checkLogin()
             is LoginViewModel.Event.Join -> moveJoin()
+            is LoginViewModel.Event.ShowToast -> unimplemented(event.text)
         }
     }
 
@@ -45,6 +46,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(R.layou
 
     private fun moveJoin() {
         findNavController().navigate(R.id.action_loginFragment_to_joinFragment)
+    }
+
+    private fun unimplemented(text: String) {
+        Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT).show()
     }
 
 }

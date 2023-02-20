@@ -25,9 +25,22 @@ class JoinViewModel @Inject constructor() : BaseViewModel() {
     fun join() {
         event(Event.Join)
     }
+
+    fun businessJoin() {
+        event(Event.BusinessJoin)
+    }
+
+    fun userJoin() {
+        event(Event.UserJoin)
+    }
+
     sealed class Event {
         object Join: Event()
 
         object Search: Event()
+
+        object BusinessJoin: Event()
+
+        object UserJoin: Event()
     }
 }
