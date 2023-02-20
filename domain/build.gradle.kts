@@ -1,6 +1,10 @@
 plugins {
     id(Plugin.library)
     id(Plugin.kotlin)
+    id(Plugin.kotlinKapt)
+    id(Plugin.kotlinParcelize)
+    id(Plugin.daggerPlugin)
+    id(Plugin.kt_lint) version Version.KT_LINT
 }
 
 android {
@@ -26,4 +30,8 @@ android {
 dependencies {
     testImplementation(Libraries.Test.JUNIT)
     androidTestImplementation(Libraries.AndroidTest.ESPRESSO_CORE)
+
+    // hilt
+    implementation(Google.HILT_ANDROID)
+    kapt(Google.HILT_ANDROID_COMPILER)
 }
