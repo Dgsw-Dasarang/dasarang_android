@@ -16,11 +16,11 @@ class LoginViewModel @Inject constructor() : BaseViewModel() {
     val eventFlow = _eventFlow.asEventFlow()
 
     fun login() {
-        event(Event.Login(1))
+        event(Event.Login)
     }
 
     fun join() {
-        event(Event.Join(1))
+        event(Event.Join)
     }
 
     private fun event(event: Event) = viewModelScope.launch {
@@ -28,8 +28,8 @@ class LoginViewModel @Inject constructor() : BaseViewModel() {
     }
 
     sealed class Event {
-        data class Login(val loginNum: Int) : Event()
+        object Login: Event()
 
-        data class Join(val joinNum: Int) : Event()
+        object Join: Event()
     }
 }

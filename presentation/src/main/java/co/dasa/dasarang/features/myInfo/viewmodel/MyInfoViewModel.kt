@@ -11,7 +11,6 @@ import javax.inject.Inject
 @HiltViewModel
 class MyInfoViewModel @Inject constructor() : BaseViewModel() {
     private val _eventFlow = MutableEventFlow<Event>()
-    private var logoutCnt = 0
     val eventFlow = _eventFlow.asEventFlow()
 
     fun showToast() {
@@ -19,8 +18,7 @@ class MyInfoViewModel @Inject constructor() : BaseViewModel() {
     }
 
     fun logout() {
-        event(Event.Logout(++logoutCnt))
-        logoutCnt = 0
+        event(Event.Logout)
     }
 
     private fun event(event: Event) = viewModelScope.launch {
@@ -29,7 +27,6 @@ class MyInfoViewModel @Inject constructor() : BaseViewModel() {
 
     sealed class Event {
         data class ShowToast(val text: String) : Event()
-
-        data class Logout(val logout: Int) : Event()
+        object Logout: Event()
     }
 }

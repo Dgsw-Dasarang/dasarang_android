@@ -18,7 +18,16 @@ class JoinViewModel @Inject constructor() : BaseViewModel() {
         _eventFlow.emit(event)
     }
 
+    fun search() {
+        event(Event.Search)
+    }
+
+    fun join() {
+        event(Event.Join)
+    }
     sealed class Event {
-        data class Join(val joinNum: Int) : Event()
+        object Join: Event()
+
+        object Search: Event()
     }
 }

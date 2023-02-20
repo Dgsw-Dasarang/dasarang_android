@@ -17,11 +17,17 @@ class PlazaViewModel @Inject constructor() : BaseViewModel() {
         event(Event.ShowToast("테스트 토스트"))
     }
 
+    fun moveScreen(cnt: Int) {
+        event(Event.MoveScreen(cnt))
+    }
+
     private fun event(event: Event) = viewModelScope.launch {
         _eventFlow.emit(event)
     }
 
     sealed class Event {
         data class ShowToast(val text: String) : Event()
+
+        data class MoveScreen(val cnt: Int) : Event()
     }
 }
