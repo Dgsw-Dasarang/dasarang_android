@@ -1,9 +1,12 @@
 package co.dasa.dasarang.features.auth.join.fragment
 
+import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import co.dasa.dasarang.R
 import co.dasa.dasarang.base.BaseFragment
 import co.dasa.dasarang.databinding.FragmentJoinBinding
+import co.dasa.dasarang.extensions.repeatOnStarted
 import co.dasa.dasarang.features.auth.join.viewmodel.JoinViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -13,6 +16,26 @@ class JoinFragment : BaseFragment<FragmentJoinBinding, JoinViewModel>(R.layout.f
     override val viewModel: JoinViewModel by viewModels()
 
     override fun start() {
+        repeatOnStarted {
+            viewModel.eventFlow.collect { event -> handleEvent(event)}
+        }
+    }
 
+    private fun handleEvent(event: JoinViewModel.Event) {
+        when (event) {
+            is JoinViewModel.Event.Search -> search()
+            is JoinViewModel.Event.Join -> join()
+        }
+    }
+
+    private fun search() {
+        //TODO 다음 주소 검색 api 사용
+        Toast.makeText(requireContext(), "기능 구현 중 입니다.", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun join() {
+        //TODO 회원가입 데이터 처리
+        //임시로 화면만 넘김
+        findNavController().navigate(R.id.action_joinFragment_to_loginFragment)
     }
 }

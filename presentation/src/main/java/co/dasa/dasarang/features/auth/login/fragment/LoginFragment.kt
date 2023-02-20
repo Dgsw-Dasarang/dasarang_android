@@ -2,6 +2,7 @@ package co.dasa.dasarang.features.auth.login.fragment
 
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import co.dasa.dasarang.R
 import co.dasa.dasarang.base.BaseFragment
 import co.dasa.dasarang.databinding.FragmentLoginBinding
@@ -32,13 +33,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(R.layou
     private fun checkLogin() {
         if (binding.etUserId.text.isNotBlank() && binding.etUserPw.text.isNotBlank()) {
             //TODO id, pw 비교 확인 작업 후 승인
-            val fragmentManager = fragmentManager
-
-            val plazaFragment = PlazaFragment()
-            fragmentManager!!.beginTransaction().apply {
-                replace(R.id.fcv_main, plazaFragment)
-                commit()
-            }
+            findNavController().navigate(R.id.action_loginFragment_to_main_plaza)
         }else if (binding.etUserId.text.isNullOrBlank()){
             binding.etUserId.requestFocus()
             Toast.makeText(requireContext(), "아이디를 입력해 주세요", Toast.LENGTH_SHORT).show()
@@ -49,14 +44,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(R.layou
     }
 
     private fun moveJoin() {
-        val fragmentManager = fragmentManager
-
-        val joinFragment = JoinFragment()
-        fragmentManager!!.beginTransaction().apply {
-            replace(R.id.fcv_main, joinFragment)
-            addToBackStack(null)
-            commit()
-        }
+        findNavController().navigate(R.id.action_loginFragment_to_joinFragment)
     }
 
 }
