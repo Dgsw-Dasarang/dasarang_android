@@ -8,8 +8,8 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import co.dasa.dasarang.features.main.activity.MainActivity
 import co.dasa.dasarang.BR
+import co.dasa.dasarang.features.main.activity.MainActivity
 
 abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel>(
     @LayoutRes private val layoutRes: Int

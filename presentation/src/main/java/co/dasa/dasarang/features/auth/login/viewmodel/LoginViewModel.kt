@@ -2,8 +2,6 @@ package co.dasa.dasarang.features.auth.login.viewmodel
 
 import androidx.lifecycle.viewModelScope
 import co.dasa.dasarang.base.BaseViewModel
-import co.dasa.dasarang.features.auth.join.viewmodel.JoinViewModel
-import co.dasa.dasarang.features.myInfo.viewmodel.MyInfoViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kr.co.moreversal.grabthathoe.utils.MutableEventFlow
@@ -33,10 +31,10 @@ class LoginViewModel @Inject constructor() : BaseViewModel() {
     }
 
     sealed class Event {
-        object Login: Event()
+        object Login : Event()
 
-        object Join: Event()
+        object Join : Event()
 
-        data class ShowToast(val text: String): Event()
+        data class ShowToast(val text: String) : Event()
     }
 }

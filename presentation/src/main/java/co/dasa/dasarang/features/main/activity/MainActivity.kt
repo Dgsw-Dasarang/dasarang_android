@@ -1,7 +1,5 @@
 package co.dasa.dasarang.features.main.activity
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.navigation.NavController
@@ -32,5 +30,4 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
     fun setNavVisible(demand: Boolean) {
         binding.bnvMain.visibility = if (demand) View.VISIBLE else View.GONE
     }
-
 }

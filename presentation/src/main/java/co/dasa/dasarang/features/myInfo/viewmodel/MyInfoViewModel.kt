@@ -27,6 +27,6 @@ class MyInfoViewModel @Inject constructor() : BaseViewModel() {
 
     sealed class Event {
         data class ShowToast(val text: String) : Event()
-        object Logout: Event()
+        object Logout : Event()
     }
 }
