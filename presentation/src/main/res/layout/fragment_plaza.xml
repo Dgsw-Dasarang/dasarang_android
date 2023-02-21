@@ -66,7 +66,7 @@
             android:id="@+id/tv_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="28dp"
             android:fontFamily="@font/pretendard_medium"
             android:text="카테고리"
             android:textColor="@color/black"
@@ -77,13 +77,16 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/new_layout"
-            android:layout_width="166dp"
-            android:layout_height="114dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="W, 57:83"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="9dp"
             android:background="@drawable/news_list_background"
             android:onClick="@{() -> vm.moveScreen(0)}"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/edu_layout"
             app:layout_constraintTop_toBottomOf="@id/tv_category">
 
             <ImageView
@@ -111,12 +114,15 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/edu_layout"
-            android:layout_width="166dp"
-            android:layout_height="114dp"
-            android:layout_marginStart="20dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="W, 57:83"
+            app:layout_constraintStart_toEndOf="@id/new_layout"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="9dp"
             android:background="@drawable/news_list_background"
             android:onClick="@{() -> vm.moveScreen(1)}"
-            app:layout_constraintStart_toEndOf="@id/new_layout"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/new_layout">
 
             <ImageView
@@ -144,9 +150,12 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/sch_layout"
-            android:layout_width="166dp"
-            android:layout_height="114dp"
-            android:layout_marginTop="24dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="W, 57:83"
+            app:layout_constraintEnd_toStartOf="@id/academy_layout"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="9dp"
             android:background="@drawable/news_list_background"
             android:onClick="@{() -> vm.moveScreen(2)}"
             app:layout_constraintStart_toStartOf="@id/new_layout"
@@ -177,9 +186,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/academy_layout"
-            android:layout_width="166dp"
-            android:layout_height="114dp"
-            android:layout_marginStart="20dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="W, 57:83"
+            app:layout_constraintEnd_toEndOf="@id/edu_layout"
+            android:layout_marginStart="9dp"
             android:background="@drawable/news_list_background"
             android:onClick="@{() -> vm.moveScreen(3)}"
             app:layout_constraintStart_toEndOf="@id/sch_layout"
@@ -210,9 +221,12 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/kid_layout"
-            android:layout_width="166dp"
-            android:layout_height="114dp"
-            android:layout_marginTop="24dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="W, 57:83"
+            app:layout_constraintEnd_toStartOf="@id/child_layout"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="9dp"
             android:background="@drawable/news_list_background"
             android:onClick="@{() -> vm.moveScreen(4)}"
             app:layout_constraintStart_toStartOf="@id/new_layout"
@@ -243,9 +257,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/child_layout"
-            android:layout_width="166dp"
-            android:layout_height="114dp"
-            android:layout_marginStart="20dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="W, 57:83"
+            android:layout_marginStart="9dp"
+            app:layout_constraintEnd_toEndOf="@id/academy_layout"
             android:background="@drawable/news_list_background"
             android:onClick="@{() -> vm.moveScreen(5)}"
             app:layout_constraintStart_toEndOf="@id/kid_layout"
