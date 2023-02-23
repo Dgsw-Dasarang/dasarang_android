@@ -1,5 +1,6 @@
 package co.dasa.dasarang.features.myInfo.fragment
 
+import android.view.Window
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -7,6 +8,7 @@ import co.dasa.dasarang.R
 import co.dasa.dasarang.base.BaseFragment
 import co.dasa.dasarang.databinding.FragmentMyinfoBinding
 import co.dasa.dasarang.extensions.repeatOnStarted
+import co.dasa.dasarang.features.main.activity.MainActivity
 import co.dasa.dasarang.features.myInfo.viewmodel.MyInfoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,6 +19,8 @@ class MyInfoFragment : BaseFragment<FragmentMyinfoBinding, MyInfoViewModel>(R.la
     override val hasBottomNavigation: Boolean = true
 
     override fun start() {
+        (activity as MainActivity).updateStatusBarColor("#46BBFB")
+
         repeatOnStarted {
             viewModel.eventFlow.collect { event -> handleEvent(event) }
         }
