@@ -34,7 +34,7 @@ abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel>(
         super.onViewCreated(view, savedInstanceState)
         prepareDataBinding()
         (activity as? MainActivity)?.setNavVisible(hasBottomNavigation)
-        (activity as MainActivity).updateStatusBarColor("#FFFFFF")
+        (activity as MainActivity).updateStatusBarColor("#FAFBFF")
         start()
     }
 
