@@ -30,10 +30,15 @@ class MyInfoFragment : BaseFragment<FragmentMyinfoBinding, MyInfoViewModel>(R.la
         when (event) {
             is MyInfoViewModel.Event.ShowToast -> Toast.makeText(requireContext(), event.text, Toast.LENGTH_SHORT).show()
             is MyInfoViewModel.Event.Logout -> logout()
+            is MyInfoViewModel.Event.Modify -> modify()
         }
     }
 
     private fun logout() {
         findNavController().navigate(R.id.action_main_info_to_loginFragment)
+    }
+
+    private fun modify() {
+        findNavController().navigate(R.id.action_main_info_to_modify_info)
     }
 }

@@ -21,6 +21,10 @@ class MyInfoViewModel @Inject constructor() : BaseViewModel() {
         event(Event.Logout)
     }
 
+    fun modify() {
+        event(Event.Modify)
+    }
+
     private fun event(event: Event) = viewModelScope.launch {
         _eventFlow.emit(event)
     }
@@ -28,5 +32,7 @@ class MyInfoViewModel @Inject constructor() : BaseViewModel() {
     sealed class Event {
         data class ShowToast(val text: String) : Event()
         object Logout : Event()
+
+        object Modify : Event()
     }
 }
