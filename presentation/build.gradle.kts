@@ -4,6 +4,7 @@ plugins {
     id(Plugin.kotlinKapt)
     id(Plugin.kotlinParcelize)
     id(Plugin.daggerPlugin)
+    id(Plugin.kt_lint) version Version.KT_LINT
 }
 
 android {

@@ -28,4 +28,6 @@ object Version {
     const val VIEWMODEL = "2.5.1"
 
     const val HILT = "2.44"
+
+    const val KT_LINT = "10.2.0"
 }

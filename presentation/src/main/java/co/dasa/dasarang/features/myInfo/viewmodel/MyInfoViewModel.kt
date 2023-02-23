@@ -1,4 +1,4 @@
-package co.dasa.dasarang.features.plaza.viewmodel
+package co.dasa.dasarang.features.myInfo.viewmodel
 
 import androidx.lifecycle.viewModelScope
 import co.dasa.dasarang.base.BaseViewModel
@@ -9,7 +9,7 @@ import kr.co.moreversal.grabthathoe.utils.asEventFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class PlazaViewModel @Inject constructor() : BaseViewModel() {
+class MyInfoViewModel @Inject constructor() : BaseViewModel() {
     private val _eventFlow = MutableEventFlow<Event>()
     val eventFlow = _eventFlow.asEventFlow()
 
@@ -17,8 +17,8 @@ class PlazaViewModel @Inject constructor() : BaseViewModel() {
         event(Event.ShowToast("테스트 토스트"))
     }
 
-    fun moveScreen(cnt: Int) {
-        event(Event.MoveScreen(cnt))
+    fun logout() {
+        event(Event.Logout)
     }
 
     private fun event(event: Event) = viewModelScope.launch {
@@ -27,7 +27,6 @@ class PlazaViewModel @Inject constructor() : BaseViewModel() {
 
     sealed class Event {
         data class ShowToast(val text: String) : Event()
-
-        data class MoveScreen(val cnt: Int) : Event()
+        object Logout : Event()
     }
 }

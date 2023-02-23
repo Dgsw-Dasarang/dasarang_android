@@ -24,6 +24,11 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
     private fun handleEvent(event: PlazaViewModel.Event) {
         when (event) {
             is PlazaViewModel.Event.ShowToast -> Toast.makeText(requireContext(), event.text, Toast.LENGTH_SHORT).show()
+            is PlazaViewModel.Event.MoveScreen -> checkMove(event.cnt)
         }
+    }
+
+    private fun checkMove(cnt: Int) {
+        // TODO 값 넘겨서 어떤 소식을 띄워야하는지 알게하기
     }
 }

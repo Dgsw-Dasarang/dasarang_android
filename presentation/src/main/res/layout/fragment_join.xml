@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="co.dasa.dasarang.features.auth.join.viewmodel.JoinViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/user_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="60dp"
+                android:src="@drawable/logo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/et_business_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/edit_auth_background"
+                android:fontFamily="@font/pretendard_regular"
+                android:gravity="center_vertical"
+                android:hint="사업자 등록 번호를 입력해 주세요"
+                android:paddingHorizontal="25dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_logo" />
+
+            <EditText
+                android:id="@+id/et_business_email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edit_auth_background"
+                android:fontFamily="@font/pretendard_regular"
+                android:gravity="center_vertical"
+                android:hint="이메일을 입력해 주세요"
+                android:paddingHorizontal="25dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/et_business_number"
+                app:layout_constraintStart_toStartOf="@id/et_business_number"
+                app:layout_constraintTop_toBottomOf="@id/et_business_number" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edit_auth_background"
+                android:fontFamily="@font/pretendard_regular"
+                android:gravity="center_vertical"
+                android:hint="주소를 입력해 주세요"
+                android:paddingHorizontal="25dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@id/btn_search"
+                app:layout_constraintStart_toStartOf="@id/iv_logo"
+                app:layout_constraintTop_toBottomOf="@id/et_business_email" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_search"
+                android:layout_width="112dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/edit_btn_background"
+                android:fontFamily="@font/pretendard_regular"
+                android:onClick="@{() -> vm.search()}"
+                android:text="찾기"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_address"
+                app:layout_constraintTop_toTopOf="@id/tv_address" />
+
+            <EditText
+                android:id="@+id/et_phone_num"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edit_auth_background"
+                android:fontFamily="@font/pretendard_regular"
+                android:hint="전화번호를 입력해 주세요"
+                android:paddingHorizontal="25dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/btn_search"
+                app:layout_constraintStart_toStartOf="@id/tv_address"
+                app:layout_constraintTop_toBottomOf="@id/tv_address" />
+
+            <EditText
+                android:id="@+id/et_birth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edit_auth_background"
+                android:fontFamily="@font/pretendard_regular"
+                android:hint="생년월일을 입력해 주세요  ex) 980323"
+                android:paddingHorizontal="25dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/et_phone_num"
+                app:layout_constraintStart_toStartOf="@id/et_phone_num"
+                app:layout_constraintTop_toBottomOf="@id/et_phone_num" />
+
+            <EditText
+                android:id="@+id/et_user_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edit_auth_background"
+                android:fontFamily="@font/pretendard_regular"
+                android:hint="아이디를 입력해 주세요"
+                android:paddingHorizontal="25dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/et_phone_num"
+                app:layout_constraintStart_toStartOf="@id/et_phone_num"
+                app:layout_constraintTop_toBottomOf="@id/et_birth" />
+
+            <EditText
+                android:id="@+id/et_user_pw"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edit_auth_background"
+                android:fontFamily="@font/pretendard_regular"
+                android:hint="비밀번호를 입력해 주세요"
+                android:paddingHorizontal="25dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/et_phone_num"
+                app:layout_constraintStart_toStartOf="@id/et_phone_num"
+                app:layout_constraintTop_toBottomOf="@id/et_user_id" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_join"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edit_btn_background"
+                android:fontFamily="@font/pretendard_regular"
+                android:onClick="@{() -> vm.join()}"
+                android:text="회원가입"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@id/et_phone_num"
+                app:layout_constraintStart_toStartOf="@id/et_phone_num"
+                app:layout_constraintTop_toBottomOf="@id/et_user_pw" />
+
+            <LinearLayout
+                android:id="@+id/menu_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:paddingBottom="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_join">
+
+                <TextView
+                    android:id="@+id/tv_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:text="로그인"
+                    android:textColor="@color/gray"
+                    android:textSize="12sp" />
+
+                <View
+                    android:id="@+id/line"
+                    android:layout_width="1dp"
+                    android:layout_height="12dp"
+                    android:layout_marginStart="6dp"
+                    android:background="@color/gray" />
+
+                <TextView
+                    android:id="@+id/tv_business"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:onClick="@{() -> vm.businessJoin()}"
+                    android:text="사업자 회원가입"
+                    android:textColor="@color/gray"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:onClick="@{() -> vm.userJoin()}"
+                    android:text="일반 회원가입"
+                    android:textColor="@color/gray"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/business_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="et_business_email, et_business_number" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
