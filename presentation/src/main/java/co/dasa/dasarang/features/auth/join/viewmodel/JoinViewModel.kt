@@ -11,7 +11,7 @@ import javax.inject.Inject
 @HiltViewModel
 class JoinViewModel @Inject constructor() : BaseViewModel() {
 
-    private val _eventFlow = MutableEventFlow<JoinViewModel.Event>()
+    private val _eventFlow = MutableEventFlow<Event>()
     val eventFlow = _eventFlow.asEventFlow()
 
     private fun event(event: Event) = viewModelScope.launch {
