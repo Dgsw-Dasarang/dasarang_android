@@ -20,6 +20,8 @@ object Libraries {
         const val ROOM_RUNTIME = "androidx.room:room-runtime:${Version.ROOM}"
         const val ROOM_KTX = "androidx.room:room-ktx:${Version.ROOM}"
         const val ROOM_COMPILER = "androidx.room:room-compiler:${Version.ROOM}"
+
+        const val VIEWPAGER2 = "androidx.viewpager2:viewpager2:${Version.VIEWPAGER2}"
     }
 
     object KTX {
