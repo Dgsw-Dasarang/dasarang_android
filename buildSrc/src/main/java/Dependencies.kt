@@ -3,7 +3,8 @@ object Kotlin {
     const val COROUTINES_ANDROID = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.KOTLINX_COROUTINES}"
 }
 object Libraries {
-
+    const val GLIDE = "com.github.bumptech.glide:glide:${Version.GLIDE}"
+    const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${Version.GLIDE}"
     object AndroidX {
         const val APP_COMPAT = "androidx.appcompat:appcompat:${Version.APP_COMPAT}"
         const val MATERIAL = "com.google.android.material:material:${Version.MATERIAL}"

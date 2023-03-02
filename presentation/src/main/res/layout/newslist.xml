@@ -46,6 +46,7 @@
         android:layout_width="74dp"
         android:layout_height="0dp"
         android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toStartOf="@id/state_layout"
         android:background="@drawable/newslist_background"
         app:layout_constraintDimensionRatio="W, 51:74"
         app:layout_constraintStart_toStartOf="@id/tv_sub_title"

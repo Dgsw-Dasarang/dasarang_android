@@ -32,4 +32,6 @@ object Version {
     const val KT_LINT = "10.2.0"
 
     const val VIEWPAGER2 = "1.0.0"
+
+    const val GLIDE = "4.13.0"
 }

@@ -81,6 +81,10 @@ dependencies {
     // viewPager2
     implementation(Libraries.AndroidX.VIEWPAGER2)
 
+    // glide
+    implementation(Libraries.GLIDE)
+    kapt(Libraries.GLIDE_COMPILER)
+
     implementation(project(AppConfig.domain))
     implementation(project(AppConfig.data))
 }
