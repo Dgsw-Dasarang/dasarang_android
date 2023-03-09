@@ -68,11 +68,11 @@ dependencies {
     kapt(Libraries.AndroidX.ROOM_COMPILER)
     implementation(Libraries.AndroidX.ROOM_KTX)
 
-    implementation(Libraries.AndroidX.RUNTIME)
-
-    implementation(Libraries.AndroidX.VIEWMODEL)
-    implementation(Libraries.AndroidX.VIEWMODEL_KTX)
-    implementation(Libraries.AndroidX.FRAGMENT_KTX)
+    // retrofit
+    implementation(Libraries.RETROFIT)
+    implementation(Libraries.RETROFIT_CONVERTER_GSON)
+    implementation(Libraries.OKHTTP)
+    implementation(Libraries.OKHTTP_LOGGING_INTERCEPTOR)
 
     // hilt
     implementation(Google.HILT_ANDROID)
@@ -84,6 +84,12 @@ dependencies {
     // glide
     implementation(Libraries.GLIDE)
     kapt(Libraries.GLIDE_COMPILER)
+
+    implementation(Libraries.AndroidX.RUNTIME)
+
+    implementation(Libraries.AndroidX.VIEWMODEL)
+    implementation(Libraries.AndroidX.VIEWMODEL_KTX)
+    implementation(Libraries.AndroidX.FRAGMENT_KTX)
 
     implementation(project(AppConfig.domain))
     implementation(project(AppConfig.data))

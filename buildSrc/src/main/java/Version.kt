@@ -34,4 +34,7 @@ object Version {
     const val VIEWPAGER2 = "1.0.0"
 
     const val GLIDE = "4.13.0"
+
+    const val RETROFIT = "2.9.0"
+    const val OKHTTP = "4.9.0"
 }
