@@ -18,7 +18,7 @@ class ModifyFragment : BaseFragment<FragmentModifyBinding, ModifyViewModel>(R.la
 
     override fun start() {
         repeatOnStarted {
-            viewModel.eventFlow.collect { event -> handleEvent(event)}
+            viewModel.eventFlow.collect { event -> handleEvent(event) }
         }
     }
 
@@ -44,8 +44,8 @@ class ModifyFragment : BaseFragment<FragmentModifyBinding, ModifyViewModel>(R.la
     }
 
     private fun modify() {
-        //TODO 서버로 데이터 전달 후 정보 변경 적용
-        //임시 처리
+        // TODO 서버로 데이터 전달 후 정보 변경 적용
+        // 임시 처리
         findNavController().navigate(R.id.action_modify_info_to_main_info)
     }
 

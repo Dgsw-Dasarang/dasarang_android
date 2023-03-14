@@ -32,7 +32,6 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
 
     private fun checkMove(cnt: Int) {
         // TODO 값 넘겨서 어떤 소식을 띄워야하는지 알게하기
-
     }
 
     private fun setBannerViewPager() {
@@ -42,7 +41,5 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
         adapter.item.addAll(bannerList)
 
         binding.ivBanner.adapter = adapter
-
     }
-
 }

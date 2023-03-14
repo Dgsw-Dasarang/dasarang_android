@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.dasa.dasarang.databinding.ItemBannerBinding
 
-
 class ViewPagerAdapter : RecyclerView.Adapter<ViewPagerAdapter.MyViewHolder>() {
     val item = mutableListOf<Int>()
 
@@ -26,6 +25,4 @@ class ViewPagerAdapter : RecyclerView.Adapter<ViewPagerAdapter.MyViewHolder>() {
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind()
     }
-
-
 }

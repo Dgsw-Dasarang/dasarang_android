@@ -1,11 +1,7 @@
 package co.dasa.dasarang.features.plaza.viewmodel
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import co.dasa.dasarang.R
 import co.dasa.dasarang.base.BaseViewModel
-import co.dasa.dasarang.features.plaza.adapter.ViewPagerAdapter
-import co.dasa.domain.model.banner.BannerInfo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kr.co.moreversal.grabthathoe.utils.MutableEventFlow
@@ -33,7 +29,5 @@ class PlazaViewModel @Inject constructor() : BaseViewModel() {
         data class ShowToast(val text: String) : Event()
 
         data class MoveScreen(val cnt: Int) : Event()
-
     }
-
 }
