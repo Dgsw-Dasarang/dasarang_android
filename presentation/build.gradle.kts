@@ -37,6 +37,9 @@ android {
     kotlinOptions {
         jvmTarget = AppConfig.jvmTarget
     }
+    lint {
+        baseline = file("lint-baseline.xml")
+    }
 }
 
 dependencies {
@@ -68,15 +71,28 @@ dependencies {
     kapt(Libraries.AndroidX.ROOM_COMPILER)
     implementation(Libraries.AndroidX.ROOM_KTX)
 
+    // retrofit
+    implementation(Libraries.RETROFIT)
+    implementation(Libraries.RETROFIT_CONVERTER_GSON)
+    implementation(Libraries.OKHTTP)
+    implementation(Libraries.OKHTTP_LOGGING_INTERCEPTOR)
+
+    // hilt
+    implementation(Google.HILT_ANDROID)
+    kapt(Google.HILT_ANDROID_COMPILER)
+
+    // viewPager2
+    implementation(Libraries.AndroidX.VIEWPAGER2)
+
+    // glide
+    implementation(Libraries.GLIDE)
+    kapt(Libraries.GLIDE_COMPILER)
+
     implementation(Libraries.AndroidX.RUNTIME)
 
     implementation(Libraries.AndroidX.VIEWMODEL)
     implementation(Libraries.AndroidX.VIEWMODEL_KTX)
     implementation(Libraries.AndroidX.FRAGMENT_KTX)
-
-    // hilt
-    implementation(Google.HILT_ANDROID)
-    kapt(Google.HILT_ANDROID_COMPILER)
 
     implementation(project(AppConfig.domain))
     implementation(project(AppConfig.data))

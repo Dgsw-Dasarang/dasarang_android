@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="co.dasa.dasarang.features.modify.viewmodel.ModifyViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            android:onClick="@{() -> vm.back()}"
+            android:src="@drawable/ic_round_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_modify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/pretendard_medium"
+            android:text="프로필 수정"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_back"
+            app:layout_constraintStart_toEndOf="@id/iv_back"
+            app:layout_constraintTop_toTopOf="@id/iv_back" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/body_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="26dp"
+            android:background="@drawable/news_list_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="W, 323:175"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_back">
+
+            <ImageView
+                android:id="@+id/iv_user_profile"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_marginTop="28dp"
+                android:onClick="@{() -> vm.modifyProfile()}"
+                android:scaleType="fitXY"
+                android:src="@drawable/modify_profile"
+                app:layout_constraintDimensionRatio="W, 1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_user_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/pretendard_regular"
+                android:text="ID"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_user_profile" />
+
+            <EditText
+                android:id="@+id/et_user_id"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/edit_auth_background"
+                android:fontFamily="@font/pretendard_regular"
+                android:hint="KMS05"
+                android:maxLength="16"
+                android:maxLines="1"
+                android:paddingHorizontal="18dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:textSize="14sp"
+                app:layout_constraintDimensionRatio="W, 21:151"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_user_id" />
+
+            <TextView
+                android:id="@+id/tv_phoneNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/pretendard_regular"
+                android:text="전화번호"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@id/tv_user_id"
+                app:layout_constraintTop_toBottomOf="@id/et_user_id" />
+
+            <EditText
+                android:id="@+id/et_phone_num"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/edit_auth_background"
+                android:hint="010-1234-5678"
+                android:maxLines="1"
+                android:paddingHorizontal="18dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:textSize="14sp"
+                app:layout_constraintDimensionRatio="W, 21:151"
+                app:layout_constraintEnd_toEndOf="@id/et_user_id"
+                app:layout_constraintStart_toStartOf="@id/et_user_id"
+                app:layout_constraintTop_toBottomOf="@id/tv_phoneNum" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/pretendard_regular"
+                android:text="주소"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@id/et_user_id"
+                app:layout_constraintTop_toBottomOf="@id/et_phone_num" />
+
+            <TextView
+                android:id="@+id/tv_user_address"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/edit_auth_background"
+                android:gravity="center_vertical"
+                android:hint="달성군 다사읍"
+                android:paddingStart="16dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:textSize="14sp"
+                app:layout_constraintDimensionRatio="W, 21:112"
+                app:layout_constraintStart_toStartOf="@id/et_user_id"
+                app:layout_constraintTop_toBottomOf="@id/tv_address" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_search"
+                android:layout_width="66dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/edit_btn_background"
+                android:fontFamily="@font/pretendard_regular"
+                android:onClick="@{() -> vm.search()}"
+                android:text="찾기"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_user_address"
+                app:layout_constraintDimensionRatio="W, 21:33"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_user_address"
+                app:layout_constraintTop_toTopOf="@id/tv_user_address" />
+
+            <TextView
+                android:id="@+id/tv_birth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/pretendard_regular"
+                android:text="생년월일"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@id/et_user_id"
+                app:layout_constraintTop_toBottomOf="@id/tv_user_address" />
+
+            <EditText
+                android:id="@+id/et_birth"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/edit_auth_background"
+                android:hint="051012"
+                android:paddingStart="18dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:textSize="14sp"
+                app:layout_constraintDimensionRatio="W, 21:151"
+                app:layout_constraintEnd_toEndOf="@id/et_user_id"
+                app:layout_constraintStart_toStartOf="@id/et_user_id"
+                app:layout_constraintTop_toBottomOf="@id/tv_birth" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_modify"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/edit_btn_background"
+                android:fontFamily="@font/pretendard_regular"
+                android:onClick="@{() -> vm.modify()}"
+                android:text="수정하기"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintDimensionRatio="W, 21:151"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_birth" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

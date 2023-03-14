@@ -3,7 +3,13 @@ object Kotlin {
     const val COROUTINES_ANDROID = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.KOTLINX_COROUTINES}"
 }
 object Libraries {
+    const val RETROFIT = "com.squareup.retrofit2:retrofit:${Version.RETROFIT}"
+    const val RETROFIT_CONVERTER_GSON = "com.squareup.retrofit2:converter-gson:${Version.RETROFIT}"
+    const val OKHTTP = "com.squareup.okhttp3:okhttp:${Version.OKHTTP}"
+    const val OKHTTP_LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${Version.OKHTTP}"
 
+    const val GLIDE = "com.github.bumptech.glide:glide:${Version.GLIDE}"
+    const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${Version.GLIDE}"
     object AndroidX {
         const val APP_COMPAT = "androidx.appcompat:appcompat:${Version.APP_COMPAT}"
         const val MATERIAL = "com.google.android.material:material:${Version.MATERIAL}"
@@ -20,6 +26,8 @@ object Libraries {
         const val ROOM_RUNTIME = "androidx.room:room-runtime:${Version.ROOM}"
         const val ROOM_KTX = "androidx.room:room-ktx:${Version.ROOM}"
         const val ROOM_COMPILER = "androidx.room:room-compiler:${Version.ROOM}"
+
+        const val VIEWPAGER2 = "androidx.viewpager2:viewpager2:${Version.VIEWPAGER2}"
     }
 
     object KTX {

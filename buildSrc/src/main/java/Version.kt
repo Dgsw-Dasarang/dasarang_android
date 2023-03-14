@@ -30,4 +30,11 @@ object Version {
     const val HILT = "2.44"
 
     const val KT_LINT = "10.2.0"
+
+    const val VIEWPAGER2 = "1.0.0"
+
+    const val GLIDE = "4.13.0"
+
+    const val RETROFIT = "2.9.0"
+    const val OKHTTP = "4.9.0"
 }

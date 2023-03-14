@@ -1,6 +1,9 @@
 package co.dasa.dasarang.features.main.activity
 
+import android.graphics.Color
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -29,5 +32,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
 
     fun setNavVisible(demand: Boolean) {
         binding.bnvMain.visibility = if (demand) View.VISIBLE else View.GONE
+    }
+
+    fun updateStatusBarColor(color: String) {
+        val window: Window = window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = Color.parseColor(color)
     }
 }

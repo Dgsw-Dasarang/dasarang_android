@@ -28,6 +28,7 @@ class JoinFragment : BaseFragment<FragmentJoinBinding, JoinViewModel>(R.layout.f
             is JoinViewModel.Event.Join -> join()
             is JoinViewModel.Event.BusinessJoin -> business()
             is JoinViewModel.Event.UserJoin -> user()
+            is JoinViewModel.Event.MoveLogin -> moveLogin()
         }
     }
 
@@ -52,5 +53,9 @@ class JoinFragment : BaseFragment<FragmentJoinBinding, JoinViewModel>(R.layout.f
         binding.businessGroup.visibility = View.GONE
         binding.tvBusiness.visibility = View.VISIBLE
         binding.tvUser.visibility = View.GONE
+    }
+
+    private fun moveLogin() {
+        findNavController().navigate(R.id.action_joinFragment_to_loginFragment)
     }
 }

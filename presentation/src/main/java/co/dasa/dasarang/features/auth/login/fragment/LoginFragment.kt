@@ -1,5 +1,6 @@
 package co.dasa.dasarang.features.auth.login.fragment
 
+import android.text.InputType
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -16,6 +17,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(R.layou
     override val viewModel: LoginViewModel by viewModels()
 
     override fun start() {
+        binding.etUserPw.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+
         repeatOnStarted {
             viewModel.eventFlow.collect { event -> handleEvent(event) }
         }

@@ -1,4 +1,4 @@
-package co.dasa.dasarang.features.myInfo.viewmodel
+package co.dasa.dasarang.features.modify.viewmodel
 
 import androidx.lifecycle.viewModelScope
 import co.dasa.dasarang.base.BaseViewModel
@@ -9,16 +9,20 @@ import kr.co.moreversal.grabthathoe.utils.asEventFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class MyInfoViewModel @Inject constructor() : BaseViewModel() {
+class ModifyViewModel @Inject constructor() : BaseViewModel() {
     private val _eventFlow = MutableEventFlow<Event>()
     val eventFlow = _eventFlow.asEventFlow()
 
-    fun showToast() {
-        event(Event.ShowToast("테스트 토스트"))
+    fun back() {
+        event(Event.Back)
     }
 
-    fun logout() {
-        event(Event.Logout)
+    fun modifyProfile() {
+        event(Event.ProfileImage)
+    }
+
+    fun search() {
+        event(Event.Search)
     }
 
     fun modify() {
@@ -30,8 +34,11 @@ class MyInfoViewModel @Inject constructor() : BaseViewModel() {
     }
 
     sealed class Event {
-        data class ShowToast(val text: String) : Event()
-        object Logout : Event()
+        object Back : Event()
+
+        object ProfileImage : Event()
+
+        object Search : Event()
 
         object Modify : Event()
     }
