@@ -7,6 +7,7 @@ object Libraries {
     const val RETROFIT_CONVERTER_GSON = "com.squareup.retrofit2:converter-gson:${Version.RETROFIT}"
     const val OKHTTP = "com.squareup.okhttp3:okhttp:${Version.OKHTTP}"
     const val OKHTTP_LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${Version.OKHTTP}"
+    const val RETORFIT_CONVERTER_SCALARS = "com.squareup.retrofit2:converter-scalars:${Version.RETROFIT}"
 
     const val GLIDE = "com.github.bumptech.glide:glide:${Version.GLIDE}"
     const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${Version.GLIDE}"

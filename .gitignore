@@ -137,3 +137,5 @@ fabric.properties
 .DS_Store
 
 .idea/
+
+/data/src/main/java/co/dasa/data/network/url
