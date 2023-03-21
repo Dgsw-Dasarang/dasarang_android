@@ -138,4 +138,4 @@ fabric.properties
 
 .idea/
 
-/data/src/main/java/co/dasa/data/network/url/
+/data/src/main/java/co/dasa/data/network/url/DasaUrl.kt
