@@ -21,6 +21,10 @@ class NewsViewModel @Inject constructor() : BaseViewModel() {
         _eventFlow.emit(event)
     }
 
+    fun getData(cnt: Int) {
+
+    }
+
     sealed class Event {
         data class ShowToast(val text: String) : Event()
     }

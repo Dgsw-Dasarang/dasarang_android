@@ -46,7 +46,15 @@
     <fragment
         android:id="@+id/main_plaza"
         android:name="co.dasa.dasarang.features.plaza.fragment.PlazaFragment"
-        android:label="PlazaFragment" />
+        android:label="PlazaFragment" >
+        <action
+            android:id="@+id/action_main_plaza_to_main_news"
+            app:destination="@id/main_news"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
 
     <fragment
         android:id="@+id/main_news"
@@ -69,7 +77,8 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/main_info" />
     </fragment>
 
     <fragment

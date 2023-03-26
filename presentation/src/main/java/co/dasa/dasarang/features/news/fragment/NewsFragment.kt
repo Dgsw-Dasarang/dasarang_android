@@ -19,6 +19,7 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsViewModel>(R.layout.f
         repeatOnStarted {
             viewModel.eventFlow.collect { event -> handleEvent(event) }
         }
+        setView()
     }
 
     private fun handleEvent(event: NewsViewModel.Event) {
@@ -26,4 +27,29 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsViewModel>(R.layout.f
             is NewsViewModel.Event.ShowToast -> Toast.makeText(requireContext(), event.text, Toast.LENGTH_SHORT).show()
         }
     }
+
+    private fun setView() {
+        val args = arguments?.getString("view")
+        when(args) {
+            "0" -> {
+                binding.tvAppTitle.text = "새소식"
+            }
+            "1" -> {
+                binding.tvAppTitle.text = "교육청 소식"
+            }
+            "2" -> {
+                binding.tvAppTitle.text = "학교별 소식"
+            }
+            "3" -> {
+                binding.tvAppTitle.text = "학원별 소식"
+            }
+            "4" -> {
+                binding.tvAppTitle.text = "유치원 소식"
+            }
+            "5" -> {
+                binding.tvAppTitle.text = "어린이집 소식"
+            }
+        }
+    }
+
 }
