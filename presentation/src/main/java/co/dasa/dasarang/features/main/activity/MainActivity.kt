@@ -59,8 +59,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
 
     override fun onBackPressed() {
         val fragment = supportFragmentManager.findFragmentById(R.id.fcv_main)
-        if (fragment is ModifyFragment) {
             super.onBackPressed()
+        if (fragment is ModifyFragment) {
         } else if (fragment is NewsFragment) {
             navController.navigate(R.id.main_plaza)
         } else {
