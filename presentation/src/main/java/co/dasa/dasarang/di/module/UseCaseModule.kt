@@ -1,11 +1,14 @@
 package co.dasa.dasarang.di.module
 
 import co.dasa.domain.repository.AuthRepository
+import co.dasa.domain.repository.EducationRepository
 import co.dasa.domain.repository.TokenRepository
 import co.dasa.domain.usecases.auth.AuthUseCases
 import co.dasa.domain.usecases.auth.JoinOwner
 import co.dasa.domain.usecases.auth.JoinUser
 import co.dasa.domain.usecases.auth.Login
+import co.dasa.domain.usecases.education.EducationUseCases
+import co.dasa.domain.usecases.education.GetEducationAll
 import co.dasa.domain.usecases.token.DeleteToken
 import co.dasa.domain.usecases.token.GetToken
 import co.dasa.domain.usecases.token.TokenUseCases
@@ -21,7 +24,7 @@ import javax.inject.Singleton
 class UseCaseModule {
     @Provides
     @Singleton
-    fun provideSearchUseCases(repository: AuthRepository): AuthUseCases =
+    fun provideAuthUseCases(repository: AuthRepository): AuthUseCases =
         AuthUseCases(
             login = Login(repository),
             joinUser = JoinUser(repository),
@@ -36,4 +39,13 @@ class UseCaseModule {
             getToken = GetToken(repository),
             updateNewToken = UpdateNewToken(repository)
         )
+
+    @Provides
+    @Singleton
+    fun provideEducationUseCases(repository: EducationRepository): EducationUseCases =
+        EducationUseCases(
+            getEducationAll = GetEducationAll(repository)
+        )
+
+
 }

@@ -4,6 +4,7 @@ import co.dasa.dasarang.di.OtherRemoteRetrofit
 import co.dasa.data.network.api.AuthApi
 import co.dasa.data.network.api.TokenApi
 import co.dasa.data.network.remote.AuthRemote
+import co.dasa.data.network.remote.EducationRemote
 import co.dasa.data.network.remote.TokenRemote
 import dagger.Module
 import dagger.Provides
@@ -22,5 +23,9 @@ class RemoteModule {
     @Singleton
     @Provides
     fun provideTokenRemote() : TokenRemote = TokenRemote()
+
+    @Singleton
+    @Provides
+    fun provideEducationRemote() : EducationRemote = EducationRemote()
 
 }

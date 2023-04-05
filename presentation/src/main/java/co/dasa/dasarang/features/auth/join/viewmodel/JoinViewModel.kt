@@ -1,10 +1,8 @@
 package co.dasa.dasarang.features.auth.join.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import co.dasa.dasarang.base.BaseViewModel
 import co.dasa.dasarang.features.auth.join.state.JoinState
-import co.dasa.dasarang.features.auth.login.state.LoginState
 import co.dasa.domain.usecases.auth.AuthUseCases
 import co.dasa.domain.usecases.auth.JoinOwner
 import co.dasa.domain.usecases.auth.JoinUser

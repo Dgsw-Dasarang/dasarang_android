@@ -19,6 +19,7 @@ import co.dasa.dasarang.extensions.shortToast
 import co.dasa.dasarang.features.main.viewmodel.MainViewModel
 import co.dasa.dasarang.features.modify.fragment.ModifyFragment
 import co.dasa.dasarang.features.news.fragment.NewsFragment
+import co.dasa.dasarang.features.plaza.fragment.PlazaFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -58,9 +59,17 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
     }
 
     override fun onBackPressed() {
-        val fragment = supportFragmentManager.findFragmentById(R.id.fcv_main)
+        super.onBackPressed()
+        if (System.currentTimeMillis() > backpressedTime + 2000) {
+            backpressedTime = System.currentTimeMillis()
+            //shortToast("\'뒤로\' 버튼을 한번 더 누르시면 종료됩니다.")
+        } else if (System.currentTimeMillis() <= backpressedTime + 2000) {
+            finish()
+        }
+        /*val fragment = supportFragmentManager.findFragmentById(R.id.fcv_main)
+        Log.d("testasd", "$fragment")
+        if (fragment is PlazaFragment) {
             super.onBackPressed()
-        if (fragment is ModifyFragment) {
         } else if (fragment is NewsFragment) {
             navController.navigate(R.id.main_plaza)
         } else {
@@ -70,8 +79,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
             } else if (System.currentTimeMillis() <= backpressedTime + 2000) {
                 finish()
             }
-        }
-
-
+        }*/
     }
 }
