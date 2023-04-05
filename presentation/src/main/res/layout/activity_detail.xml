@@ -56,16 +56,35 @@
             android:id="@+id/tv_academy_title"
             android:layout_width="0dp"
             android:layout_height="46dp"
+            android:background="@drawable/academy_title_background"
             android:fontFamily="@font/pretendard_bold"
             android:gravity="center"
             android:textColor="@color/black"
-            android:background="@drawable/academy_title_background"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="@id/iv_main_image"
             app:layout_constraintStart_toStartOf="@id/iv_main_image"
             app:layout_constraintTop_toBottomOf="@id/iv_main_image"
             tools:text="봄날 수학학원" />
 
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tap_academy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintEnd_toEndOf="@id/tv_academy_title"
+            app:layout_constraintStart_toStartOf="@id/tv_academy_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_academy_title" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/container"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/tap_academy"
+            app:layout_constraintStart_toStartOf="@id/tap_academy"
+            app:layout_constraintTop_toBottomOf="@id/tap_academy" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

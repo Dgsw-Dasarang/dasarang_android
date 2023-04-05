@@ -11,6 +11,8 @@ object Libraries {
 
     const val GLIDE = "com.github.bumptech.glide:glide:${Version.GLIDE}"
     const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${Version.GLIDE}"
+
+    const val TAPLAYOUT = "com.android.support.design:${Version.TAP}"
     object AndroidX {
         const val APP_COMPAT = "androidx.appcompat:appcompat:${Version.APP_COMPAT}"
         const val MATERIAL = "com.google.android.material:material:${Version.MATERIAL}"
