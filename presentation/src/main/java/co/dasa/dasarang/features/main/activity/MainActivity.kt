@@ -1,25 +1,18 @@
 package co.dasa.dasarang.features.main.activity
 
 import android.graphics.Color
-import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import androidx.activity.viewModels
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import co.dasa.dasarang.R
 import co.dasa.dasarang.base.BaseActivity
 import co.dasa.dasarang.databinding.ActivityMainBinding
-import co.dasa.dasarang.extensions.shortToast
 import co.dasa.dasarang.features.main.viewmodel.MainViewModel
-import co.dasa.dasarang.features.modify.fragment.ModifyFragment
-import co.dasa.dasarang.features.news.fragment.NewsFragment
-import co.dasa.dasarang.features.plaza.fragment.PlazaFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -62,7 +55,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
         super.onBackPressed()
         if (System.currentTimeMillis() > backpressedTime + 2000) {
             backpressedTime = System.currentTimeMillis()
-            //shortToast("\'뒤로\' 버튼을 한번 더 누르시면 종료됩니다.")
+            // shortToast("\'뒤로\' 버튼을 한번 더 누르시면 종료됩니다.")
         } else if (System.currentTimeMillis() <= backpressedTime + 2000) {
             finish()
         }

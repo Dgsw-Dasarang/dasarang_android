@@ -1,6 +1,5 @@
 package co.dasa.domain.base
 
-import android.util.Log
 import co.dasa.domain.exception.TokenException
 import co.dasa.domain.util.Resource
 import co.dasa.domain.util.Utils

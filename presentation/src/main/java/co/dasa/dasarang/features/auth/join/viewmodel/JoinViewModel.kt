@@ -59,7 +59,8 @@ class JoinViewModel @Inject constructor(
     }
 
     fun doOwnerJoin(id: String, pw: String, address: String, number: String, birth: String, ownerNumber: String, email: String) {
-        authUseCases.joinOwner(JoinOwner.Params(id, pw, address, number, birth, ownerNumber, email)).divideResult(isLoading,
+        authUseCases.joinOwner(JoinOwner.Params(id, pw, address, number, birth, ownerNumber, email)).divideResult(
+            isLoading,
             { _joinState.value = JoinState(result = it, isUpdate = true) },
             { _joinState.value = JoinState(error = it ?: "회원가입에 실패하였습니다.") }
         ).launchIn(viewModelScope)

@@ -29,7 +29,7 @@ class DetailActivity : BaseActivity<ActivityDetailBinding, DetailViewModel>(R.la
     }
 
     private fun handleEvent(event: DetailViewModel.Event) {
-        when(event) {
+        when (event) {
             is DetailViewModel.Event.Back -> moveBack()
         }
     }
@@ -42,16 +42,14 @@ class DetailActivity : BaseActivity<ActivityDetailBinding, DetailViewModel>(R.la
         viewPager.adapter = adapter
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            when(position) {
+            when (position) {
                 0 -> tab.text = "정보"
                 1 -> tab.text = "게시판"
                 2 -> tab.text = "상담"
             }
         }.attach()
-
     }
     private fun moveBack() {
         finish()
     }
-
 }

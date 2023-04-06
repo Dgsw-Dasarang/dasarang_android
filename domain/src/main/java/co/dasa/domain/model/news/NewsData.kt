@@ -1,6 +1,6 @@
 package co.dasa.domain.model.news
 
-data class NewsData (
+data class NewsData(
     val image: String?,
     val title: String,
     val location: String,

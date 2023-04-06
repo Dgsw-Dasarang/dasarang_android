@@ -42,7 +42,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(R.layou
                 loginState.collect { state ->
                     if (state.error.isNotBlank()) {
                         shortToast(state.error)
-                    } else if(state.isUpdate) {
+                    } else if (state.isUpdate) {
                         findNavController().navigate(R.id.main_plaza)
                     }
                 }

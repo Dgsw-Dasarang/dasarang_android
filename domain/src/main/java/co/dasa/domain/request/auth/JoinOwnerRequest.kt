@@ -1,6 +1,5 @@
 package co.dasa.domain.request.auth
 
-import co.dasa.domain.util.Utils
 import java.security.NoSuchAlgorithmException
 
 class JoinOwnerRequest(

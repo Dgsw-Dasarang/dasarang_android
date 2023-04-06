@@ -2,7 +2,6 @@ package co.dasa.dasarang.features.news.viewmodel
 
 import androidx.lifecycle.viewModelScope
 import co.dasa.dasarang.base.BaseViewModel
-import co.dasa.dasarang.features.plaza.viewmodel.PlazaViewModel
 import kotlinx.coroutines.launch
 import kr.co.moreversal.grabthathoe.utils.MutableEventFlow
 import kr.co.moreversal.grabthathoe.utils.asEventFlow
@@ -21,7 +20,7 @@ class DetailViewModel @Inject constructor() : BaseViewModel() {
         _eventFlow.emit(event)
     }
 
-    sealed class Event{
+    sealed class Event {
         object Back : Event()
     }
 }

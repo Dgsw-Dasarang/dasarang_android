@@ -17,7 +17,6 @@ class AuthRepositoryImpl @Inject constructor(
     private val tokenDataSource: TokenDataSource
 ) : AuthRepository {
 
-
     override suspend fun login(loginRequest: LoginRequest) {
         authDataSource.login(loginRequest).also {
             accountDataSource.insertAccount(AccountEntity(loginRequest.userId!!, loginRequest.password!!))
@@ -25,11 +24,11 @@ class AuthRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun joinUser(joinUserRequest: JoinUserRequest){
+    override suspend fun joinUser(joinUserRequest: JoinUserRequest) {
         authDataSource.joinUser(joinUserRequest)
     }
 
-    override suspend fun joinOwner(joinOwnerRequest: JoinOwnerRequest){
+    override suspend fun joinOwner(joinOwnerRequest: JoinOwnerRequest) {
         authDataSource.joinOwner(joinOwnerRequest)
     }
 }

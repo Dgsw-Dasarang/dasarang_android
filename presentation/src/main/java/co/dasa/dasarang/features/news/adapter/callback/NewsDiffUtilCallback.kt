@@ -11,6 +11,4 @@ object NewsDiffUtilCallback : DiffUtil.ItemCallback<NewsData>() {
     override fun areContentsTheSame(oldItem: NewsData, newItem: NewsData): Boolean {
         return oldItem.title == newItem.title
     }
-
-
 }

@@ -3,20 +3,16 @@ package com.stac.data.base.remote
 import co.dasa.data.network.url.DasaUrl
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
-import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
-import java.lang.reflect.Type
 import java.util.concurrent.Executors
 
 abstract class RetrofitRemote<SV> : BaseRemote<SV>() {
     protected fun <T> createApi(service: Class<T>): T {
         return RETROFIT.create(service)
     }
-
 
     private val RETROFIT: Retrofit = Retrofit.Builder()
         .client(client)
@@ -33,6 +29,4 @@ abstract class RetrofitRemote<SV> : BaseRemote<SV>() {
             val okHttpBuilder = OkHttpClient().newBuilder().addInterceptor(interceptor)
             return okHttpBuilder.build()
         }
-
-
 }

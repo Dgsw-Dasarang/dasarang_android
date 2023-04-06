@@ -41,8 +41,6 @@ class NetworkModule {
         return okhttpBuilder.build()
     }
 
-
-
     @OtherRemoteRetrofit
     @Provides
     @Singleton

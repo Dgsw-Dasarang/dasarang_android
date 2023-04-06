@@ -6,7 +6,6 @@ import co.dasa.domain.request.auth.JoinOwnerRequest
 import co.dasa.domain.request.auth.JoinUserRequest
 import co.dasa.domain.request.auth.LoginRequest
 import retrofit2.http.Body
-import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface AuthApi {
@@ -24,5 +23,4 @@ interface AuthApi {
     suspend fun joinOwner(
         @Body joinOwnerRequest: JoinOwnerRequest
     )
-
 }

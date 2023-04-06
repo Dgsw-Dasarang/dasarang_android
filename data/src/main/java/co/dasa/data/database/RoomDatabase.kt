@@ -34,11 +34,12 @@ abstract class RoomDatabase : androidx.room.RoomDatabase() {
                     .setQueryCallback({ sqlQuery, bindArgs ->
                         println("SQL Query: $sqlQuery SQL Args: $bindArgs")
                     }, Executors.newSingleThreadExecutor())
-                    .fallbackToDestructiveMigration()
-                    .allowMainThreadQueries()
-                    .build()
+                        .fallbackToDestructiveMigration()
+                        .allowMainThreadQueries()
+                        .build()
+                }
+                return instance
             }
-            return instance
         }
     }
-}
+    

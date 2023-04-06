@@ -2,7 +2,6 @@ package co.dasa.dasarang.features.plaza.fragment
 
 import android.widget.Toast
 import androidx.core.os.bundleOf
-import androidx.core.view.isInvisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import co.dasa.dasarang.R

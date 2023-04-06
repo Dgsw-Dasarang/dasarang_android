@@ -11,7 +11,5 @@ class CounselFragment : BaseFragment<FragmentCounselBinding, CounselViewModel>(R
     override val viewModel: CounselViewModel by viewModels()
 
     override fun start() {
-
     }
-
 }

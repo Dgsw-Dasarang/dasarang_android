@@ -1,6 +1,10 @@
 package co.dasa.data.base.remote
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Update
 
 @Dao
 interface BaseDao<ET> {

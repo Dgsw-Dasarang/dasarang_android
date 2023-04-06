@@ -1,6 +1,5 @@
 package co.dasa.dasarang.features.auth.join.fragment
 
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
@@ -42,11 +41,10 @@ class JoinFragment : BaseFragment<FragmentJoinBinding, JoinViewModel>(R.layout.f
         with(viewModel) {
             lifecycleScope.launchWhenStarted {
                 joinState.collect { state ->
-                    if(state.isUpdate) {
+                    if (state.isUpdate) {
                         findNavController().navigate(R.id.action_joinFragment_to_loginFragment)
                         shortToast("회원가입에 성공하셨습니다.")
-                    }
-                    else if (state.error.isNotBlank()) {
+                    } else if (state.error.isNotBlank()) {
                         shortToast(state.error)
                     }
                 }
@@ -60,7 +58,7 @@ class JoinFragment : BaseFragment<FragmentJoinBinding, JoinViewModel>(R.layout.f
     }
 
     private fun join() {
-        if(role == "user") {
+        if (role == "user") {
             viewModel.doUserJoin(
                 binding.etUserId.text.toString(),
                 binding.etUserPw.text.toString(),
@@ -68,8 +66,9 @@ class JoinFragment : BaseFragment<FragmentJoinBinding, JoinViewModel>(R.layout.f
                 binding.etPhoneNum.text.toString(),
                 binding.etBirth.text.toString()
             )
-        } else if(role == "owner") {
-            viewModel.doOwnerJoin(binding.etUserId.text.toString(),
+        } else if (role == "owner") {
+            viewModel.doOwnerJoin(
+                binding.etUserId.text.toString(),
                 binding.etUserPw.text.toString(),
                 binding.tvAddress.text.toString(),
                 binding.etPhoneNum.text.toString(),
@@ -78,7 +77,6 @@ class JoinFragment : BaseFragment<FragmentJoinBinding, JoinViewModel>(R.layout.f
                 binding.etBusinessEmail.text.toString()
             )
         }
-
     }
 
     private fun business() {

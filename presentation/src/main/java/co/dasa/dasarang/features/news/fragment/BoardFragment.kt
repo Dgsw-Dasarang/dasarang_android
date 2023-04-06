@@ -12,7 +12,6 @@ class BoardFragment : BaseFragment<FragmentBoardBinding, BoardViewModel>(R.layou
 
     override fun start() {
 
-        //TODO 리사이클러 어뎁터 만들고 연결하기
+        // TODO 리사이클러 어뎁터 만들고 연결하기
     }
-
 }

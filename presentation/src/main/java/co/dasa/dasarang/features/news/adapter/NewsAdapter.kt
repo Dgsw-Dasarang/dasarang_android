@@ -14,9 +14,6 @@ class NewsAdapter() : BaseListAdapter<NewsData, ItemNewsBinding>(R.layout.item_n
         binding.root.setOnClickListener {
             val intent = Intent(binding.root.context, DetailActivity::class.java)
             binding.root.context.startActivity(intent)
-
         }
     }
-
-
 }

@@ -15,7 +15,7 @@ class AuthDataSource @Inject constructor(
 
     suspend fun login(loginRequest: LoginRequest): LoginData = remote.login(loginRequest)
 
-    suspend fun joinUser(joinUserRequest: JoinUserRequest)= remote.joinUser(joinUserRequest)
+    suspend fun joinUser(joinUserRequest: JoinUserRequest) = remote.joinUser(joinUserRequest)
 
-    suspend fun joinOwner(joinOwnerRequest: JoinOwnerRequest)= remote.joinOwner(joinOwnerRequest)
+    suspend fun joinOwner(joinOwnerRequest: JoinOwnerRequest) = remote.joinOwner(joinOwnerRequest)
 }

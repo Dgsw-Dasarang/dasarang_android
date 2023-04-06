@@ -16,7 +16,5 @@ class InfoViewModel @Inject constructor() : BaseViewModel() {
         _eventFlow.emit(event)
     }
 
-    sealed class Event{
-
-    }
+    sealed class Event
 }

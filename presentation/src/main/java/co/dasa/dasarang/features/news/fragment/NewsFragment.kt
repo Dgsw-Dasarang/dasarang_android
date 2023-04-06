@@ -21,7 +21,6 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsViewModel>(R.layout.f
 
     private lateinit var newsAdapter: NewsAdapter
 
-
     override fun start() {
         repeatOnStarted {
             viewModel.eventFlow.collect { event -> handleEvent(event) }
@@ -46,7 +45,7 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsViewModel>(R.layout.f
 
     private fun setView() {
         val args = arguments?.getString("view")
-        when(args) {
+        when (args) {
             "0" -> {
                 binding.tvAppTitle.text = "새소식"
             }
@@ -58,7 +57,7 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsViewModel>(R.layout.f
             }
             "3" -> {
                 binding.tvAppTitle.text = "학원별 소식"
-                //setNewsAdapter()
+                // setNewsAdapter()
             }
             "4" -> {
                 binding.tvAppTitle.text = "유치원 소식"
@@ -73,7 +72,7 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsViewModel>(R.layout.f
         with(viewModel) {
             lifecycleScope.launchWhenStarted {
                 educationState.collect { state ->
-                    if(state.isUpdate) {
+                    if (state.isUpdate) {
                         state.result.let {
                             newsAdapter.submitList(mapper(it))
                         }
@@ -87,9 +86,8 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsViewModel>(R.layout.f
         val list = mutableListOf<NewsData>()
         data?.list?.forEach {
             list.add(NewsData(null, it.academyName, it.admstZoneName, it.status, it.courseListName))
-            //TODO courseListName -> ??
+            // TODO courseListName -> ??
         }
         return list
     }
-
 }

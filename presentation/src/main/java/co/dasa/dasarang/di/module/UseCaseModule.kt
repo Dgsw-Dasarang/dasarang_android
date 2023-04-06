@@ -46,6 +46,4 @@ class UseCaseModule {
         EducationUseCases(
             getEducationAll = GetEducationAll(repository)
         )
-
-
 }

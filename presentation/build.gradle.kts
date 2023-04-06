@@ -95,8 +95,6 @@ dependencies {
     implementation(Libraries.AndroidX.VIEWMODEL_KTX)
     implementation(Libraries.AndroidX.FRAGMENT_KTX)
 
-    //implementation(Libraries.TAPLAYOUT)
-
     implementation(project(AppConfig.domain))
     implementation(project(AppConfig.data))
 }

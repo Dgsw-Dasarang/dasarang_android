@@ -8,8 +8,7 @@ class EducationRemote : RetrofitRemote<EducationApi>() {
     override val api: EducationApi
         get() = createApi(EducationApi::class.java)
 
-    suspend fun getEducationAll(page: Int) : EducationDatas {
+    suspend fun getEducationAll(page: Int): EducationDatas {
         return api.getEducationAll(page, 10)
     }
-
 }
