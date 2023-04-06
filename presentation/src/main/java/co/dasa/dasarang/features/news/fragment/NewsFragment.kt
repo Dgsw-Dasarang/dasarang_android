@@ -1,6 +1,5 @@
 package co.dasa.dasarang.features.news.fragment
 
-import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -59,6 +58,7 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsViewModel>(R.layout.f
             }
             "3" -> {
                 binding.tvAppTitle.text = "학원별 소식"
+                //setNewsAdapter()
             }
             "4" -> {
                 binding.tvAppTitle.text = "유치원 소식"

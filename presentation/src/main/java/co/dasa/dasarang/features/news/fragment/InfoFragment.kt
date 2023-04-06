@@ -11,7 +11,7 @@ class InfoFragment : BaseFragment<FragmentInfoBinding, InfoViewModel>(R.layout.f
     override val viewModel: InfoViewModel by viewModels()
 
     override fun start() {
-        
+        //TODO info 연결해서 데이터 넣어놓기
     }
 
 }
