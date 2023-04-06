@@ -1,7 +1,9 @@
 package co.dasa.dasarang.features.plaza.fragment
 
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import co.dasa.dasarang.R
 import co.dasa.dasarang.base.BaseFragment
 import co.dasa.dasarang.databinding.FragmentPlazaBinding
@@ -27,11 +29,17 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
         when (event) {
             is PlazaViewModel.Event.ShowToast -> Toast.makeText(requireContext(), event.text, Toast.LENGTH_SHORT).show()
             is PlazaViewModel.Event.MoveScreen -> checkMove(event.cnt)
+            is PlazaViewModel.Event.Login -> moveLogin()
         }
     }
 
     private fun checkMove(cnt: Int) {
-        // TODO 값 넘겨서 어떤 소식을 띄워야하는지 알게하기
+        val bundle = bundleOf("view" to "$cnt")
+        findNavController().navigate(R.id.action_main_plaza_to_main_news, bundle)
+    }
+
+    private fun moveLogin() {
+        findNavController().navigate(R.id.action_main_plaza_to_loginFragment)
     }
 
     private fun setBannerViewPager() {

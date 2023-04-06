@@ -3,11 +3,13 @@ package co.dasa.dasarang.features.auth.login.fragment
 import android.text.InputType
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import co.dasa.dasarang.R
 import co.dasa.dasarang.base.BaseFragment
 import co.dasa.dasarang.databinding.FragmentLoginBinding
 import co.dasa.dasarang.extensions.repeatOnStarted
+import co.dasa.dasarang.extensions.shortToast
 import co.dasa.dasarang.features.auth.login.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,6 +24,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(R.layou
         repeatOnStarted {
             viewModel.eventFlow.collect { event -> handleEvent(event) }
         }
+
+        collectLoginState()
     }
 
     private fun handleEvent(event: LoginViewModel.Event) {
@@ -32,10 +36,23 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(R.layou
         }
     }
 
+    private fun collectLoginState() {
+        with(viewModel) {
+            lifecycleScope.launchWhenStarted {
+                loginState.collect { state ->
+                    if (state.error.isNotBlank()) {
+                        shortToast(state.error)
+                    } else if (state.isUpdate) {
+                        findNavController().navigate(R.id.main_plaza)
+                    }
+                }
+            }
+        }
+    }
+
     private fun checkLogin() {
         if (binding.etUserId.text.isNotBlank() && binding.etUserPw.text.isNotBlank()) {
-            // TODO id, pw 비교 확인 작업 후 승인
-            findNavController().navigate(R.id.action_loginFragment_to_main_plaza)
+            viewModel.doLogin(binding.etUserId.text.toString(), binding.etUserPw.text.toString())
         } else if (binding.etUserId.text.isNullOrBlank()) {
             binding.etUserId.requestFocus()
             Toast.makeText(requireContext(), "아이디를 입력해 주세요", Toast.LENGTH_SHORT).show()
