@@ -2,6 +2,7 @@ package co.dasa.dasarang.features.auth.login.fragment
 
 import android.text.InputType
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -17,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(R.layout.fragment_login) {
 
     override val viewModel: LoginViewModel by viewModels()
+    override val hasBottomNavigation: Boolean = false
 
     override fun start() {
         binding.etUserPw.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
@@ -43,7 +45,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(R.layou
                     if (state.error.isNotBlank()) {
                         shortToast(state.error)
                     } else if (state.isUpdate) {
-                        findNavController().navigate(R.id.main_plaza)
+                        val bundle = bundleOf("role" to state.result!!.role, "id" to state.result.id)
+                        findNavController().navigate(R.id.main_plaza, bundle)
                     }
                 }
             }

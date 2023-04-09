@@ -32,8 +32,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="40dp"
             android:fontFamily="@font/pretendard_regular"
-            android:text="로그인"
             android:onClick="@{() -> vm.login()}"
+            android:text="로그인"
+            android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@id/tv_app_title"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,11 +46,12 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="9dp"
             android:fontFamily="@font/pretendard_regular"
-            android:text="kms05"
+            android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@id/tv_app_title"
             app:layout_constraintEnd_toStartOf="@id/iv_profile"
-            app:layout_constraintTop_toTopOf="@id/tv_app_title" />
+            app:layout_constraintTop_toTopOf="@id/tv_app_title"
+            tools:text="kms05" />
 
         <ImageView
             android:id="@+id/iv_profile"
@@ -117,6 +119,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/pretendard_regular"
                 android:text="새 소식"
+                android:textColor="@color/black"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -153,6 +156,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/pretendard_regular"
                 android:text="교육청 소식"
+                android:textColor="@color/black"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -189,6 +193,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/pretendard_regular"
                 android:text="학교별 소식"
+                android:textColor="@color/black"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -224,6 +229,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/pretendard_regular"
                 android:text="학원별 소식"
+                android:textColor="@color/black"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -260,6 +266,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/pretendard_regular"
                 android:text="유치원 소식"
+                android:textColor="@color/black"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -295,6 +302,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/pretendard_regular"
                 android:text="어린이집 소식"
+                android:textColor="@color/black"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -312,6 +320,7 @@
             android:id="@+id/group_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="visible"
             app:constraint_referenced_ids="tv_login" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

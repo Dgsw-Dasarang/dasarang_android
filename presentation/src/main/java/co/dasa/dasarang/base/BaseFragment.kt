@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import co.dasa.dasarang.BR
+import co.dasa.dasarang.features.main.activity.MainActivity
 
 abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel>(
     @LayoutRes private val layoutRes: Int
@@ -16,7 +17,7 @@ abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel>(
 
     protected lateinit var binding: B
     protected abstract val viewModel: VM
-    protected open val hasBottomNavigation: Boolean = false
+    protected open val hasBottomNavigation: Boolean = true
 
     protected abstract fun start()
 
@@ -32,6 +33,7 @@ abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         prepareDataBinding()
+        (activity as? MainActivity)?.setNavVisible(hasBottomNavigation)
         start()
     }
 

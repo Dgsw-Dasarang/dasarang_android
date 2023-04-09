@@ -5,6 +5,7 @@ import co.dasa.data.datasource.AccountDataSource
 import co.dasa.data.datasource.AuthDataSource
 import co.dasa.data.datasource.TokenDataSource
 import co.dasa.domain.model.token.Token
+import co.dasa.domain.model.user.User
 import co.dasa.domain.repository.AuthRepository
 import co.dasa.domain.request.auth.JoinOwnerRequest
 import co.dasa.domain.request.auth.JoinUserRequest
@@ -17,10 +18,11 @@ class AuthRepositoryImpl @Inject constructor(
     private val tokenDataSource: TokenDataSource
 ) : AuthRepository {
 
-    override suspend fun login(loginRequest: LoginRequest) {
+    override suspend fun login(loginRequest: LoginRequest) : User {
         authDataSource.login(loginRequest).also {
             accountDataSource.insertAccount(AccountEntity(loginRequest.userId!!, loginRequest.password!!))
             tokenDataSource.insertToken(Token(it.accessToken, it.refreshToken))
+            return User(it.name, it.type)
         }
     }
 

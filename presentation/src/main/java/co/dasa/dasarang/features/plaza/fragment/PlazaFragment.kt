@@ -1,13 +1,16 @@
 package co.dasa.dasarang.features.plaza.fragment
 
+import android.view.View
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import co.dasa.dasarang.R
 import co.dasa.dasarang.base.BaseFragment
 import co.dasa.dasarang.databinding.FragmentPlazaBinding
 import co.dasa.dasarang.extensions.repeatOnStarted
+import co.dasa.dasarang.extensions.shortToast
 import co.dasa.dasarang.features.plaza.adapter.ViewPagerAdapter
 import co.dasa.dasarang.features.plaza.viewmodel.PlazaViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,6 +26,7 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
         repeatOnStarted {
             viewModel.eventFlow.collect { event -> handleEvent(event) }
         }
+        settingView()
     }
 
     private fun handleEvent(event: PlazaViewModel.Event) {
@@ -30,6 +34,18 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
             is PlazaViewModel.Event.ShowToast -> Toast.makeText(requireContext(), event.text, Toast.LENGTH_SHORT).show()
             is PlazaViewModel.Event.MoveScreen -> checkMove(event.cnt)
             is PlazaViewModel.Event.Login -> moveLogin()
+        }
+    }
+
+    private fun settingView() {
+        val role = arguments?.getString("role")
+        val id = arguments?.getString("id")
+
+        if (!role.isNullOrBlank()) {
+            binding.groupLogin.visibility = View.GONE
+            binding.groupProfile.visibility = View.VISIBLE
+
+            binding.tvUserId.text = id
         }
     }
 

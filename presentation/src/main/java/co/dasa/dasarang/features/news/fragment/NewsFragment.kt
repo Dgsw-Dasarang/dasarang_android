@@ -85,7 +85,7 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsViewModel>(R.layout.f
     private fun mapper(data: EducationDatas?): MutableList<NewsData> {
         val list = mutableListOf<NewsData>()
         data?.list?.forEach {
-            list.add(NewsData(null, it.academyName, it.admstZoneName, it.status, it.courseListName))
+            list.add(NewsData(null, it.academyName, it.admstZoneName, it.status, it.courseName))
             // TODO courseListName -> ??
         }
         return list

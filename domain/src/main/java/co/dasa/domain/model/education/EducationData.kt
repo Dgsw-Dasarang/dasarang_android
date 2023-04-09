@@ -3,7 +3,7 @@ package co.dasa.domain.model.education
 data class EducationData(
     val academyName: String,
     val admstZoneName: String,
-    val courseListName: String,
+    val courseName: String,
     val createdAt: String,
     val roadAddress: String,
     val status: String,
