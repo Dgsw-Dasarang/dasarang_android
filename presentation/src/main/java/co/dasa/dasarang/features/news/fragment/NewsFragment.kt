@@ -1,5 +1,6 @@
 package co.dasa.dasarang.features.news.fragment
 
+import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -7,10 +8,10 @@ import co.dasa.dasarang.R
 import co.dasa.dasarang.base.BaseFragment
 import co.dasa.dasarang.databinding.FragmentNewsBinding
 import co.dasa.dasarang.extensions.repeatOnStarted
-import co.dasa.dasarang.features.news.adapter.NewsAdapter
+import co.dasa.dasarang.features.news.adapter.EduNewsAdapter
 import co.dasa.dasarang.features.news.viewmodel.NewsViewModel
 import co.dasa.domain.model.education.EducationDatas
-import co.dasa.domain.model.news.NewsData
+import co.dasa.domain.model.news.EduNewsData
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,7 +20,7 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsViewModel>(R.layout.f
     override val viewModel: NewsViewModel by viewModels()
     override val hasBottomNavigation: Boolean = true
 
-    private lateinit var newsAdapter: NewsAdapter
+    private lateinit var eduNewsAdapter: EduNewsAdapter
 
     override fun start() {
         repeatOnStarted {
@@ -30,9 +31,10 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsViewModel>(R.layout.f
         collectEducationState()
     }
 
-    private fun setNewsAdapter() {
-        newsAdapter = NewsAdapter()
-        binding.recyclerNews.adapter = newsAdapter
+    //TODO news adapter 만들고 api 받아서 연결 해주기
+    private fun setEduNewsAdapter() {
+        eduNewsAdapter = EduNewsAdapter()
+        binding.recyclerEduNews.adapter = eduNewsAdapter
         viewModel.getData(1)
     }
 
@@ -65,9 +67,12 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsViewModel>(R.layout.f
             }
         }
         if(args?.toInt() == 3) {
-            setNewsAdapter()
+            binding.recyclerEduNews.visibility = View.VISIBLE
+            binding.recyclerNews.visibility = View.GONE
+            setEduNewsAdapter()
         } else {
-
+            binding.recyclerEduNews.visibility = View.GONE
+            binding.recyclerNews.visibility = View.VISIBLE
         }
     }
 
@@ -77,7 +82,7 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsViewModel>(R.layout.f
                 educationState.collect { state ->
                     if (state.isUpdate) {
                         state.result.let {
-                            newsAdapter.submitList(mapper(it))
+                            eduNewsAdapter.submitList(mapper(it))
                         }
                     }
                 }
@@ -85,10 +90,10 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsViewModel>(R.layout.f
         }
     }
 
-    private fun mapper(data: EducationDatas?): MutableList<NewsData> {
-        val list = mutableListOf<NewsData>()
+    private fun mapper(data: EducationDatas?): MutableList<EduNewsData> {
+        val list = mutableListOf<EduNewsData>()
         data?.list?.forEach {
-            list.add(NewsData(null, it.academyName, it.admstZoneName, it.status, it.courseName))
+            list.add(EduNewsData(null, it.academyName, it.admstZoneName, it.status, it.courseName))
             // TODO courseListName -> ??
         }
         return list
