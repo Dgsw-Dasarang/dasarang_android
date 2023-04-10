@@ -170,12 +170,62 @@
                 app:layout_constraintStart_toStartOf="@id/et_phone_num"
                 app:layout_constraintTop_toBottomOf="@id/et_user_id" />
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_agree"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edit_auth_background"
+                app:layout_constraintEnd_toEndOf="@id/et_phone_num"
+                app:layout_constraintStart_toStartOf="@id/et_phone_num"
+                app:layout_constraintTop_toBottomOf="@id/et_user_pw">
+
+                <CheckBox
+                    android:id="@+id/check_user_agree"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:onClick="@{() -> vm.checkAgree()}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/tv_user_agree"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_user_agree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="45dp"
+                    android:fontFamily="@font/pretendard_medium"
+                    android:text="이용약관동의"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/check_user_agree"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/check_user_agree" />
+
+                <ImageView
+                    android:id="@+id/img_user_agree"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginEnd="10dp"
+                    android:onClick="@{() -> vm.moveAgree()}"
+                    android:rotation="180"
+                    android:src="@drawable/ic_round_arrow_back"
+                    app:layout_constraintBottom_toBottomOf="@id/check_user_agree"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/check_user_agree" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_join"
                 android:layout_width="0dp"
                 android:layout_height="56dp"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/edit_btn_background"
+                android:enabled="false"
                 android:fontFamily="@font/pretendard_regular"
                 android:onClick="@{() -> vm.join()}"
                 android:text="회원가입"
@@ -183,7 +233,7 @@
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="@id/et_phone_num"
                 app:layout_constraintStart_toStartOf="@id/et_phone_num"
-                app:layout_constraintTop_toBottomOf="@id/et_user_pw" />
+                app:layout_constraintTop_toBottomOf="@id/layout_agree" />
 
             <LinearLayout
                 android:id="@+id/menu_layout"

@@ -1,5 +1,7 @@
 package co.dasa.dasarang.features.auth.join.fragment
 
+import android.content.Intent
+import android.net.Uri
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
@@ -29,6 +31,8 @@ class JoinFragment : BaseFragment<FragmentJoinBinding, JoinViewModel>(R.layout.f
 
     private fun handleEvent(event: JoinViewModel.Event) {
         when (event) {
+            is JoinViewModel.Event.CheckAgree -> checkAgree()
+            is JoinViewModel.Event.MoveAgree -> moveAgree()
             is JoinViewModel.Event.Search -> search()
             is JoinViewModel.Event.Join -> join()
             is JoinViewModel.Event.BusinessJoin -> business()
@@ -52,31 +56,57 @@ class JoinFragment : BaseFragment<FragmentJoinBinding, JoinViewModel>(R.layout.f
         }
     }
 
+    private fun checkAgree() {
+        binding.btnJoin.isEnabled = binding.checkUserAgree.isChecked
+    }
+
+    private fun moveAgree() {
+        //TODO webView
+        Intent(Intent.ACTION_VIEW, Uri.parse("https://server.dasaedu.com/policy.html")).run {
+            startActivity(this)
+        }
+    }
+
     private fun search() {
         // TODO 다음 주소 검색 api 사용
         Toast.makeText(requireContext(), "기능 구현 중 입니다.", Toast.LENGTH_SHORT).show()
     }
 
     private fun join() {
-        if (role == "user") {
-            viewModel.doUserJoin(
-                binding.etUserId.text.toString(),
-                binding.etUserPw.text.toString(),
-                binding.tvAddress.text.toString(),
-                binding.etPhoneNum.text.toString(),
-                binding.etBirth.text.toString()
-            )
-        } else if (role == "owner") {
-            viewModel.doOwnerJoin(
-                binding.etUserId.text.toString(),
-                binding.etUserPw.text.toString(),
-                binding.tvAddress.text.toString(),
-                binding.etPhoneNum.text.toString(),
-                binding.etBirth.text.toString(),
-                binding.etBusinessNumber.text.toString(),
-                binding.etBusinessEmail.text.toString()
-            )
+        if (binding.etPhoneNum.text.isNotBlank() && binding.etBirth.text.isNotBlank() && binding.etUserId.text.isNotBlank() && binding.etUserPw.text.isNotBlank()) {
+            if (role == "user") {
+                viewModel.doUserJoin(
+                    binding.etUserId.text.toString(),
+                    binding.etUserPw.text.toString(),
+                    binding.tvAddress.text.toString(),
+                    binding.etPhoneNum.text.toString(),
+                    binding.etBirth.text.toString()
+                )
+            } else if (role == "owner") {
+                viewModel.doOwnerJoin(
+                    binding.etUserId.text.toString(),
+                    binding.etUserPw.text.toString(),
+                    binding.tvAddress.text.toString(),
+                    binding.etPhoneNum.text.toString(),
+                    binding.etBirth.text.toString(),
+                    binding.etBusinessNumber.text.toString(),
+                    binding.etBusinessEmail.text.toString()
+                )
+            }
+        } else if (binding.etPhoneNum.text.isNullOrBlank()) {
+            binding.etPhoneNum.requestFocus()
+            Toast.makeText(requireContext(), "전화번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
+        } else if (binding.etBirth.text.isNullOrBlank()) {
+            binding.etBirth.requestFocus()
+            Toast.makeText(requireContext(), "생년월일을 입력해주세요.", Toast.LENGTH_SHORT).show()
+        } else if (binding.etUserId.text.isNullOrBlank()) {
+            binding.etUserId.requestFocus()
+            Toast.makeText(requireContext(), "ID를 입력해주세요.", Toast.LENGTH_SHORT).show()
+        } else if (binding.etUserPw.text.isNullOrBlank()) {
+            binding.etUserPw.requestFocus()
+            Toast.makeText(requireContext(), "PW를 입력해주세요.", Toast.LENGTH_SHORT).show()
         }
+
     }
 
     private fun business() {

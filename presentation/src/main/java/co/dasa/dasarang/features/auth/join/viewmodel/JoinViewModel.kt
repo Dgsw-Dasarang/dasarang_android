@@ -30,6 +30,12 @@ class JoinViewModel @Inject constructor(
         _eventFlow.emit(event)
     }
 
+    fun checkAgree() {
+        event(Event.CheckAgree)
+    }
+    fun moveAgree() {
+        event(Event.MoveAgree)
+    }
     fun search() {
         event(Event.Search)
     }
@@ -67,6 +73,9 @@ class JoinViewModel @Inject constructor(
     }
 
     sealed class Event {
+
+        object CheckAgree : Event()
+        object MoveAgree : Event()
         object Join : Event()
 
         object Search : Event()
