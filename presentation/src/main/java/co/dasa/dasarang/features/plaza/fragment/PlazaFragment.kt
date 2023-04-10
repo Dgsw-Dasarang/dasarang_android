@@ -46,6 +46,14 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
             binding.groupProfile.visibility = View.VISIBLE
 
             binding.tvUserId.text = id
+
+            if(role == "ROLE_USER") {
+
+            } else if(role == "ROLE_OWNER") {
+
+            } else {
+                shortToast("알수 없는 권한")
+            }
         }
     }
 

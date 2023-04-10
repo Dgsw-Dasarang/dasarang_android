@@ -27,7 +27,6 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsViewModel>(R.layout.f
         }
         setView()
 
-        setNewsAdapter()
         collectEducationState()
     }
 
@@ -57,7 +56,6 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsViewModel>(R.layout.f
             }
             "3" -> {
                 binding.tvAppTitle.text = "학원별 소식"
-                // setNewsAdapter()
             }
             "4" -> {
                 binding.tvAppTitle.text = "유치원 소식"
@@ -65,6 +63,11 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsViewModel>(R.layout.f
             "5" -> {
                 binding.tvAppTitle.text = "어린이집 소식"
             }
+        }
+        if(args?.toInt() == 3) {
+            setNewsAdapter()
+        } else {
+
         }
     }
 
