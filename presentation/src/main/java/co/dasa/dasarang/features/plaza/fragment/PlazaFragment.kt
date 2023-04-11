@@ -11,6 +11,7 @@ import co.dasa.dasarang.base.BaseFragment
 import co.dasa.dasarang.databinding.FragmentPlazaBinding
 import co.dasa.dasarang.extensions.repeatOnStarted
 import co.dasa.dasarang.extensions.shortToast
+import co.dasa.dasarang.features.main.activity.MainActivity
 import co.dasa.dasarang.features.plaza.adapter.ViewPagerAdapter
 import co.dasa.dasarang.features.plaza.viewmodel.PlazaViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,12 +48,19 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
 
             binding.tvUserId.text = id
 
-            if(role == "ROLE_USER") {
-
-            } else if(role == "ROLE_OWNER") {
-
-            } else {
-                shortToast("알수 없는 권한")
+            when (role) {
+                "ROLE_USER" -> {
+                    binding.groupPlazaUser.visibility = View.VISIBLE
+                    binding.groupPlazaOwner.visibility = View.GONE
+                }
+                "ROLE_OWNER" -> {
+                    (activity as? MainActivity)?.setNavVisible(false)
+                    binding.groupPlazaUser.visibility = View.GONE
+                    binding.groupPlazaOwner.visibility = View.VISIBLE
+                }
+                else -> {
+                    shortToast("알수 없는 권한")
+                }
             }
         }
     }
