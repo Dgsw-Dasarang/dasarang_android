@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
+
         <variable
             name="enews"
-            type="co.dasa.domain.model.news.EduNewsData" />
+            type="co.dasa.domain.model.education.EducationData" />
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,7 +20,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="14dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="20dp"
             android:scaleType="fitXY"
             android:src="@drawable/profile"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,8 +31,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/pretendard_medium"
-            android:text="@{enews.title}"
+            android:text="@{enews.academyName}"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@id/iv_profile"
@@ -50,13 +53,14 @@
             android:id="@+id/area_layout"
             android:layout_width="74dp"
             android:layout_height="0dp"
-            android:layout_marginTop="12dp"
-            app:layout_constraintEnd_toStartOf="@id/state_layout"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/newslist_background"
-            android:layout_marginBottom="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="W, 51:74"
-            app:layout_constraintStart_toStartOf="@id/tv_sub_title"
+            app:layout_constraintStart_toEndOf="@id/iv_profile"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_sub_title">
 
             <TextView
@@ -83,17 +87,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_area"
-                tools:text="@{enews.location}" />
+                tools:text="@{enews.admstZoneName}" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/state_layout"
             android:layout_width="74dp"
             android:layout_height="0dp"
-            app:layout_constraintEnd_toStartOf="@id/subject_layout"
-            android:layout_marginStart="12dp"
             android:background="@drawable/newslist_background"
             app:layout_constraintDimensionRatio="W, 51:74"
+            app:layout_constraintEnd_toStartOf="@id/subject_layout"
             app:layout_constraintStart_toEndOf="@id/area_layout"
             app:layout_constraintTop_toTopOf="@id/area_layout">
 
@@ -128,11 +131,10 @@
             android:id="@+id/subject_layout"
             android:layout_width="74dp"
             android:layout_height="0dp"
-            android:layout_marginStart="12dp"
             android:background="@drawable/newslist_background"
             app:layout_constraintDimensionRatio="W, 51:74"
-            app:layout_constraintStart_toEndOf="@id/state_layout"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/state_layout"
             app:layout_constraintTop_toTopOf="@id/area_layout">
 
             <TextView
@@ -159,7 +161,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_subject"
-                tools:text="@{enews.subject}" />
+                tools:text="@{enews.courseName}" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
