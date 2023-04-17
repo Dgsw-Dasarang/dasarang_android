@@ -8,6 +8,7 @@ import co.dasa.dasarang.R
 import co.dasa.dasarang.base.BaseFragment
 import co.dasa.dasarang.databinding.FragmentNewsBinding
 import co.dasa.dasarang.extensions.repeatOnStarted
+import co.dasa.dasarang.features.main.activity.MainActivity
 import co.dasa.dasarang.features.news.adapter.EduNewsAdapter
 import co.dasa.dasarang.features.news.viewmodel.NewsViewModel
 import co.dasa.domain.model.education.EducationDatas
@@ -23,11 +24,12 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsViewModel>(R.layout.f
     private lateinit var eduNewsAdapter: EduNewsAdapter
 
     override fun start() {
+        (activity as MainActivity).updateStatusBarColor("#FFFFFF")
         repeatOnStarted {
             viewModel.eventFlow.collect { event -> handleEvent(event) }
         }
         setView()
-
+        //setEduNewsAdapter()
         collectEducationState()
     }
 
@@ -82,7 +84,7 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsViewModel>(R.layout.f
                 educationState.collect { state ->
                     if (state.isUpdate) {
                         state.result.let {
-                            eduNewsAdapter.submitList(mapper(it))
+                            eduNewsAdapter.submitList(it?.list?.toMutableList())
                         }
                     }
                 }
@@ -90,12 +92,11 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsViewModel>(R.layout.f
         }
     }
 
-    private fun mapper(data: EducationDatas?): MutableList<EduNewsData> {
-        val list = mutableListOf<EduNewsData>()
-        data?.list?.forEach {
-            list.add(EduNewsData(null, it.academyName, it.admstZoneName, it.status, it.courseName))
-            // TODO courseListName -> ??
-        }
-        return list
-    }
+//    private fun mapper(data: EducationDatas?): MutableList<EduNewsData> {
+//        val list = mutableListOf<EduNewsData>()
+//        data?.list?.forEach {
+//            list.add(EduNewsData(null, it.academyName, it.admstZoneName, it.status, it.courseName))
+//        }
+//        return list
+//    }
 }
