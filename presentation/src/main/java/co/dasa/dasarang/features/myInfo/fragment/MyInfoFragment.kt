@@ -1,6 +1,8 @@
 package co.dasa.dasarang.features.myInfo.fragment
 
+import android.util.Log
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import co.dasa.dasarang.R
@@ -19,10 +21,11 @@ class MyInfoFragment : BaseFragment<FragmentMyinfoBinding, MyInfoViewModel>(R.la
 
     override fun start() {
         (activity as MainActivity).updateStatusBarColor("#46BBFB")
-
+        setView()
         repeatOnStarted {
             viewModel.eventFlow.collect { event -> handleEvent(event) }
         }
+
     }
 
     private fun handleEvent(event: MyInfoViewModel.Event) {
@@ -33,11 +36,30 @@ class MyInfoFragment : BaseFragment<FragmentMyinfoBinding, MyInfoViewModel>(R.la
         }
     }
 
+        val args = arguments?.getString("view")
+    private fun setView() {
+        when (args) {
+            "owner" -> {
+                (activity as? MainActivity)?.setNavVisible(false)
+            }
+        }
+    }
+    private fun setLogoutBtn() {
+        //TODO logout 세팅
+    }
     private fun logout() {
-        findNavController().navigate(R.id.action_main_info_to_loginFragment)
+        findNavController().navigate(R.id.action_main_info_to_main_plaza)
     }
 
     private fun modify() {
-        findNavController().navigate(R.id.action_main_info_to_modify_info)
+        when (args) {
+            "owner" -> {
+                val bundle = bundleOf("view" to "owner")
+                findNavController().navigate(R.id.action_main_info_to_modify_info, bundle)
+            }
+            else -> {
+                findNavController().navigate(R.id.action_main_info_to_modify_info)
+            }
+        }
     }
 }

@@ -23,6 +23,7 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
     override val hasBottomNavigation: Boolean = true
 
     override fun start() {
+        (activity as MainActivity).updateStatusBarColor("#FFFFFF")
         setBannerViewPager()
         repeatOnStarted {
             viewModel.eventFlow.collect { event -> handleEvent(event) }
@@ -35,6 +36,7 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
             is PlazaViewModel.Event.ShowToast -> Toast.makeText(requireContext(), event.text, Toast.LENGTH_SHORT).show()
             is PlazaViewModel.Event.MoveScreen -> checkMove(event.cnt)
             is PlazaViewModel.Event.Login -> moveLogin()
+            is PlazaViewModel.Event.MoveScreenOwner -> checkMoveOwner(event.count)
         }
     }
 
@@ -68,6 +70,31 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
     private fun checkMove(cnt: Int) {
         val bundle = bundleOf("view" to "$cnt")
         findNavController().navigate(R.id.action_main_plaza_to_main_news, bundle)
+    }
+
+    private fun checkMoveOwner(count: Int) {
+        when(count) {
+            1 -> {
+                //내 학원
+                //물어보기
+            }
+            2 -> {
+                //게시판
+                //Activity 만들기
+            }
+            3 -> {
+                //상담
+                //Activity 만들기
+            }
+            4 -> {
+                val bundle = bundleOf("view" to "owner")
+                findNavController().navigate(R.id.action_main_plaza_to_main_info, bundle)
+            }
+            5 -> {
+                //결제
+                //Activity
+            }
+        }
     }
 
     private fun moveLogin() {
