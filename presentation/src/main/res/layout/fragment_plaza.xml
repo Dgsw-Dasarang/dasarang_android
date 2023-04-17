@@ -309,6 +309,205 @@
                 app:layout_constraintTop_toBottomOf="@id/iv_child_news" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_owner_academy"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/news_list_background"
+            android:onClick="@{() -> vm.moveScreenOwner(1)}"
+            android:orientation="horizontal"
+            app:layout_constraintDimensionRatio="W, 90:175"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_app_title">
+
+            <ImageView
+                android:id="@+id/iv_owner_profile"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="35dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/profile" />
+
+            <TextView
+                android:id="@+id/tv_my_academy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/pretendard_regular"
+                android:text="내 학원"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_owner_profile"
+                app:layout_constraintStart_toEndOf="@id/iv_owner_profile"
+                app:layout_constraintTop_toTopOf="@id/iv_owner_profile" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_owner_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/pretendard_medium"
+            android:text="카테고리"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/layout_owner_academy"
+            app:layout_constraintTop_toBottomOf="@id/layout_owner_academy" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/board_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="9dp"
+            android:background="@drawable/news_list_background"
+            android:onClick="@{() -> vm.moveScreenOwner(2)}"
+            app:layout_constraintDimensionRatio="W, 57:83"
+            app:layout_constraintEnd_toStartOf="@id/edu_counsel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_owner_category">
+
+            <ImageView
+                android:id="@+id/iv_board"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="22dp"
+                android:src="@drawable/board"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_board"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/pretendard_regular"
+                android:text="게시판"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_board" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/edu_counsel"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="9dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/news_list_background"
+            android:onClick="@{() -> vm.moveScreenOwner(3)}"
+            app:layout_constraintDimensionRatio="W, 57:83"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/board_layout"
+            app:layout_constraintTop_toTopOf="@id/board_layout">
+
+            <ImageView
+                android:id="@+id/iv_edu_counsel"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="22dp"
+                android:src="@drawable/child"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_edu_counsel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/pretendard_regular"
+                android:text="상담"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_edu_counsel" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/my_profile_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="9dp"
+            android:background="@drawable/news_list_background"
+            android:onClick="@{() -> vm.moveScreenOwner(4)}"
+            app:layout_constraintDimensionRatio="W, 57:83"
+            app:layout_constraintEnd_toStartOf="@id/pay_layout"
+            app:layout_constraintStart_toStartOf="@id/board_layout"
+            app:layout_constraintTop_toBottomOf="@id/board_layout">
+
+            <ImageView
+                android:id="@+id/iv_my_profile"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="22dp"
+                android:src="@drawable/myprofile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_my_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/pretendard_regular"
+                android:text="내 프로필"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_my_profile" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/pay_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="9dp"
+            android:background="@drawable/news_list_background"
+            android:onClick="@{() -> vm.moveScreenOwner(5)}"
+            app:layout_constraintDimensionRatio="W, 57:83"
+            app:layout_constraintEnd_toEndOf="@id/edu_counsel"
+            app:layout_constraintStart_toEndOf="@id/my_profile_layout"
+            app:layout_constraintTop_toTopOf="@id/my_profile_layout">
+
+            <ImageView
+                android:id="@+id/iv_pay"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="22dp"
+                android:src="@drawable/card"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/pretendard_regular"
+                android:text="결제"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_pay" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.constraintlayout.widget.Group
             android:id="@+id/group_profile"
             android:layout_width="wrap_content"
@@ -322,6 +521,20 @@
             android:layout_height="wrap_content"
             android:visibility="visible"
             app:constraint_referenced_ids="tv_login" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_plaza_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:constraint_referenced_ids="iv_banner, tv_category, new_layout, edu_layout, sch_layout, academy_layout, kid_layout, child_layout" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_plaza_owner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="layout_owner_academy, tv_owner_category, board_layout, edu_counsel, my_profile_layout, pay_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
