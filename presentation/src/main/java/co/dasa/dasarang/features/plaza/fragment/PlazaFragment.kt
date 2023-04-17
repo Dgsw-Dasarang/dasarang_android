@@ -1,5 +1,6 @@
 package co.dasa.dasarang.features.plaza.fragment
 
+import android.content.Intent
 import android.view.View
 import android.widget.Toast
 import androidx.core.os.bundleOf
@@ -12,6 +13,7 @@ import co.dasa.dasarang.databinding.FragmentPlazaBinding
 import co.dasa.dasarang.extensions.repeatOnStarted
 import co.dasa.dasarang.extensions.shortToast
 import co.dasa.dasarang.features.main.activity.MainActivity
+import co.dasa.dasarang.features.payment.activity.PaymentActivity
 import co.dasa.dasarang.features.plaza.adapter.ViewPagerAdapter
 import co.dasa.dasarang.features.plaza.viewmodel.PlazaViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -84,15 +86,17 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
             }
             3 -> {
                 //상담
-                //Activity 만들기
+                //TODO Activity 만들기 v2
+                Toast.makeText(requireContext(), "개발 중인 기능입니다.", Toast.LENGTH_SHORT).show()
             }
             4 -> {
                 val bundle = bundleOf("view" to "owner")
                 findNavController().navigate(R.id.action_main_plaza_to_main_info, bundle)
             }
             5 -> {
-                //결제
-                //Activity
+                Intent(requireContext(), PaymentActivity::class.java).run {
+                    startActivity(this)
+                }
             }
         }
     }
