@@ -14,18 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_edu_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:fontFamily="@font/pretendard_bold"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="봄날 수학학원" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_edu_address"
             android:layout_width="0dp"
@@ -35,7 +23,7 @@
             android:background="@drawable/edu_textview_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_edu_title">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/tv_road_address"
@@ -45,7 +33,7 @@
                 android:fontFamily="@font/pretendard_regular"
                 android:text="도로명주소"
                 android:textColor="#FF939393"
-                android:textSize="8dp"
+                android:textSize="11dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -57,6 +45,7 @@
                 android:layout_marginTop="1dp"
                 android:fontFamily="@font/pretendard_regular"
                 android:textColor="@color/black"
+                android:textSize="13dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_road_address"
@@ -68,24 +57,24 @@
             android:layout_width="145dp"
             android:layout_height="0dp"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/edu_textview_background"
+            android:paddingHorizontal="5dp"
+            app:layout_constraintBottom_toBottomOf="@id/layout_edu_sum"
             app:layout_constraintEnd_toStartOf="@id/layout_edu_name"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/layout_edu_sum"
             app:layout_constraintTop_toBottomOf="@id/layout_edu_address">
 
             <TextView
                 android:id="@+id/tv_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-5dp"
+                android:layout_marginTop="5dp"
                 android:fontFamily="@font/pretendard_regular"
                 android:text="인당수강료내용"
                 android:textColor="#FF939393"
-                android:textSize="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:textSize="11dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -110,7 +99,7 @@
             android:layout_width="145dp"
             android:layout_height="0dp"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/edu_textview_background"
             app:layout_constraintEnd_toEndOf="parent"
@@ -123,9 +112,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/pretendard_regular"
-                android:text="교습과정목록명"
+                android:text="교습과정명"
                 android:textColor="#FF939393"
-                android:textSize="10dp"
+                android:textSize="11dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -150,7 +139,7 @@
             android:layout_width="145dp"
             android:layout_height="0dp"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/edu_textview_background"
             app:layout_constraintEnd_toEndOf="@id/layout_edu_name"
             app:layout_constraintStart_toStartOf="@id/layout_edu_name"
@@ -164,7 +153,7 @@
                 android:fontFamily="@font/pretendard_regular"
                 android:text="등록상태명"
                 android:textColor="#FF939393"
-                android:textSize="10dp"
+                android:textSize="11dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -189,7 +178,7 @@
             android:layout_width="145dp"
             android:layout_height="0dp"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/edu_textview_background"
             app:layout_constraintEnd_toEndOf="@id/layout_edu_name"
             app:layout_constraintStart_toStartOf="@id/layout_edu_name"
@@ -203,7 +192,7 @@
                 android:fontFamily="@font/pretendard_regular"
                 android:text="개설일자"
                 android:textColor="#FF939393"
-                android:textSize="10dp"
+                android:textSize="11dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -228,7 +217,7 @@
             android:layout_width="145dp"
             android:layout_height="0dp"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/edu_textview_background"
             app:layout_constraintEnd_toEndOf="@id/layout_edu_name"
             app:layout_constraintStart_toStartOf="@id/layout_edu_name"
@@ -242,7 +231,7 @@
                 android:fontFamily="@font/pretendard_regular"
                 android:text="정원합계"
                 android:textColor="#FF939393"
-                android:textSize="10dp"
+                android:textSize="11dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
