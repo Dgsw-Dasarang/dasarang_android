@@ -3,14 +3,14 @@ package co.dasa.dasarang.features.news.viewmodel
 import androidx.lifecycle.viewModelScope
 import co.dasa.dasarang.base.BaseViewModel
 import co.dasa.dasarang.features.news.state.EducationState
+import co.dasa.dasarang.utils.MutableEventFlow
+import co.dasa.dasarang.utils.asEventFlow
 import co.dasa.domain.usecases.education.EducationUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.launch
-import kr.co.moreversal.grabthathoe.utils.MutableEventFlow
-import kr.co.moreversal.grabthathoe.utils.asEventFlow
 import javax.inject.Inject
 
 @HiltViewModel

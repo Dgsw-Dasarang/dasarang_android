@@ -11,8 +11,6 @@ import co.dasa.dasarang.extensions.repeatOnStarted
 import co.dasa.dasarang.features.main.activity.MainActivity
 import co.dasa.dasarang.features.news.adapter.EduNewsAdapter
 import co.dasa.dasarang.features.news.viewmodel.NewsViewModel
-import co.dasa.domain.model.education.EducationDatas
-import co.dasa.domain.model.news.EduNewsData
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

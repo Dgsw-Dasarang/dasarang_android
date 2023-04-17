@@ -1,6 +1,5 @@
 package co.dasa.dasarang.features.news.activity
 
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import co.dasa.dasarang.R

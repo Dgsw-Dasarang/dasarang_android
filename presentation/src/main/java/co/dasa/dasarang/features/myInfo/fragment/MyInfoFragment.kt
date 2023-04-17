@@ -1,6 +1,5 @@
 package co.dasa.dasarang.features.myInfo.fragment
 
-import android.util.Log
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
