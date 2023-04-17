@@ -1,5 +1,6 @@
 package co.dasa.dasarang.features.news.activity
 
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import co.dasa.dasarang.R
@@ -8,6 +9,7 @@ import co.dasa.dasarang.databinding.ActivityDetailBinding
 import co.dasa.dasarang.extensions.repeatOnStarted
 import co.dasa.dasarang.features.news.adapter.TabPagerAdapter
 import co.dasa.dasarang.features.news.viewmodel.DetailViewModel
+import co.dasa.domain.model.education.EducationData
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,7 +40,10 @@ class DetailActivity : BaseActivity<ActivityDetailBinding, DetailViewModel>(R.la
         tabLayout = binding.tapAcademy
         viewPager = binding.container
 
-        adapter = TabPagerAdapter(this)
+        val data = intent.getSerializableExtra("item") as EducationData //넘겨준 학원 데이터 받아주는 코드
+        binding.tvAcademyTitle.text = data.academyName
+
+        adapter = TabPagerAdapter(this, data)
         viewPager.adapter = adapter
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
