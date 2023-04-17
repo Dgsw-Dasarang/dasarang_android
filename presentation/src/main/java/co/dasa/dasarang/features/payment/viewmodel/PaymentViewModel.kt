@@ -5,8 +5,9 @@ import co.dasa.dasarang.base.BaseViewModel
 import co.dasa.dasarang.utils.MutableEventFlow
 import co.dasa.dasarang.utils.asEventFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class PaymentViewModel : BaseViewModel() {
+class PaymentViewModel @Inject constructor() : BaseViewModel() {
     private val _eventFlow = MutableEventFlow<Event>()
     val eventFlow = _eventFlow.asEventFlow()
 
