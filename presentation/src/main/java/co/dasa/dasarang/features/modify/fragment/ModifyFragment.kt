@@ -1,5 +1,6 @@
 package co.dasa.dasarang.features.modify.fragment
 
+import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -7,6 +8,7 @@ import co.dasa.dasarang.R
 import co.dasa.dasarang.base.BaseFragment
 import co.dasa.dasarang.databinding.FragmentModifyBinding
 import co.dasa.dasarang.extensions.repeatOnStarted
+import co.dasa.dasarang.features.main.activity.MainActivity
 import co.dasa.dasarang.features.modify.viewmodel.ModifyViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,6 +19,7 @@ class ModifyFragment : BaseFragment<FragmentModifyBinding, ModifyViewModel>(R.la
     override val hasBottomNavigation: Boolean = true
 
     override fun start() {
+        setView()
         repeatOnStarted {
             viewModel.eventFlow.collect { event -> handleEvent(event) }
         }
@@ -31,6 +34,18 @@ class ModifyFragment : BaseFragment<FragmentModifyBinding, ModifyViewModel>(R.la
         }
     }
 
+    private fun setView() {
+        val args = arguments?.getString("view")
+        when(args) {
+            "owner" -> {
+                (activity as? MainActivity)?.setNavVisible(false)
+                binding.ownerGroup.visibility = View.VISIBLE
+            }
+            else -> {
+                binding.ownerGroup.visibility = View.GONE
+            }
+        }
+    }
     private fun back() {
         findNavController().navigate(R.id.action_modify_info_to_main_info)
     }

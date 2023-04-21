@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import co.dasa.dasarang.R
 import co.dasa.dasarang.base.BaseFragment
@@ -30,7 +31,32 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
         repeatOnStarted {
             viewModel.eventFlow.collect { event -> handleEvent(event) }
         }
-        settingView()
+        viewModel.getUser()
+        collectUserState()
+    }
+
+    private fun collectUserState() {
+        with(viewModel) {
+            lifecycleScope.launchWhenStarted {
+                userState.collect { state ->
+                    if (state.error.isNotBlank()) {
+
+                        //TODO 로그인으로 가라고 보여주기
+                    } else if (state.isUpdate) {
+                        state.result.also {
+                            var role = ""
+                            role = if(it!!.ownerNumber.isNullOrBlank()){
+                                "ROLE_USER"
+                            } else {
+                                "ROLE_OWNER"
+                            }
+                            settingView(role, it.userId)
+                            binding.tvUserId.text = it.userId
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private fun handleEvent(event: PlazaViewModel.Event) {
@@ -42,11 +68,9 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
         }
     }
 
-    private fun settingView() {
-        val role = arguments?.getString("role")
-        val id = arguments?.getString("id")
+    private fun settingView(role: String, id: String) {
 
-        if (!role.isNullOrBlank()) {
+
             binding.groupLogin.visibility = View.GONE
             binding.groupProfile.visibility = View.VISIBLE
 
@@ -66,7 +90,6 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
                     shortToast("알수 없는 권한")
                 }
             }
-        }
     }
 
     private fun checkMove(cnt: Int) {

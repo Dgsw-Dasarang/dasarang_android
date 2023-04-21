@@ -3,6 +3,7 @@ package co.dasa.data.datasource
 import co.dasa.data.base.BaseDataSource
 import co.dasa.data.network.remote.AuthRemote
 import co.dasa.data.network.response.LoginData
+import co.dasa.data.network.response.User
 import co.dasa.domain.request.auth.JoinOwnerRequest
 import co.dasa.domain.request.auth.JoinUserRequest
 import co.dasa.domain.request.auth.LoginRequest
@@ -18,4 +19,6 @@ class AuthDataSource @Inject constructor(
     suspend fun joinUser(joinUserRequest: JoinUserRequest) = remote.joinUser(joinUserRequest)
 
     suspend fun joinOwner(joinOwnerRequest: JoinOwnerRequest) = remote.joinOwner(joinOwnerRequest)
+
+    suspend fun getUser(token: String) : User = remote.getUser(token)
 }

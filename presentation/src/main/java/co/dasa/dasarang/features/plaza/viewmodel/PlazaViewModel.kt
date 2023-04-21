@@ -2,16 +2,26 @@ package co.dasa.dasarang.features.plaza.viewmodel
 
 import androidx.lifecycle.viewModelScope
 import co.dasa.dasarang.base.BaseViewModel
+import co.dasa.dasarang.features.myInfo.state.UserState
 import co.dasa.dasarang.utils.MutableEventFlow
 import co.dasa.dasarang.utils.asEventFlow
+import co.dasa.domain.usecases.auth.AuthUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class PlazaViewModel @Inject constructor() : BaseViewModel() {
+class PlazaViewModel @Inject constructor(
+    private val authUseCases: AuthUseCases
+) : BaseViewModel() {
     private val _eventFlow = MutableEventFlow<Event>()
     val eventFlow = _eventFlow.asEventFlow()
+
+    private val _userState = MutableStateFlow(UserState())
+    val userState: StateFlow<UserState> = _userState
 
     fun showToast() {
         event(Event.ShowToast("테스트 토스트"))
@@ -27,6 +37,15 @@ class PlazaViewModel @Inject constructor() : BaseViewModel() {
 
     fun login() {
         event(Event.Login)
+    }
+
+    fun getUser() {
+        _userState.value = UserState(error = "")
+        authUseCases.getUser(Unit).divideResult(
+            isLoading,
+            { _userState.value = UserState(result = it, isUpdate = true) },
+            { _userState.value = UserState(error = it ?: "정보를 가져오는 데에 실패하였습니다") }
+        ).launchIn(viewModelScope)
     }
 
     private fun event(event: Event) = viewModelScope.launch {

@@ -20,7 +20,11 @@ class InfoFragment : BaseFragment<FragmentInfoBinding, InfoViewModel>(R.layout.f
     private fun setView() {
         val data = arguments?.getSerializable("data") as EducationData
         binding.tvAddress.text = data.roadAddress
-        binding.tvEduPrice.text = data.tuitions.toString()
+        var text = ""
+        for(i in data.tuitions) {
+            text += "${i.title} : ${i.price}\n"
+        }
+        binding.tvEduPrice.text = text
         binding.tvEduName.text = data.courseName
         binding.tvEduState.text = data.status
         binding.tvEduBirth.text = data.createdAt

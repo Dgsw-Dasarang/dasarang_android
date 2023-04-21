@@ -11,7 +11,7 @@ import co.dasa.domain.model.education.EducationData
 
 class TabPagerAdapter(fragmentActivity: FragmentActivity, data: EducationData) : FragmentStateAdapter(fragmentActivity) {
 
-    private val fragments = arrayOf(InfoFragment().apply { arguments = Bundle().apply { putSerializable("data", data) } }, BoardFragment(), CounselFragment())
+    private val fragments = arrayOf(InfoFragment().apply { arguments = Bundle().apply { putSerializable("data", data) } }, BoardFragment().apply { arguments = Bundle().apply { putSerializable("data", data) } }, CounselFragment())
 
     override fun createFragment(position: Int): Fragment {
         return fragments[position]

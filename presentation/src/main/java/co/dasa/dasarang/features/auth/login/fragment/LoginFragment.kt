@@ -45,8 +45,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(R.layou
                     if (state.error.isNotBlank()) {
                         shortToast(state.error)
                     } else if (state.isUpdate) {
-                        val bundle = bundleOf("role" to state.result!!.role, "id" to state.result.id)
-                        findNavController().navigate(R.id.main_plaza, bundle)
+                        findNavController().navigate(R.id.main_plaza)
                     }
                 }
             }

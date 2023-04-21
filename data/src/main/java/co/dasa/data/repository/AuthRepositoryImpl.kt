@@ -1,11 +1,14 @@
 package co.dasa.data.repository
 
+import android.util.Log
 import co.dasa.data.database.entity.AccountEntity
 import co.dasa.data.datasource.AccountDataSource
 import co.dasa.data.datasource.AuthDataSource
 import co.dasa.data.datasource.TokenDataSource
+import co.dasa.data.mapper.toModel
 import co.dasa.domain.model.token.Token
 import co.dasa.domain.model.user.User
+import co.dasa.domain.model.user.UserInfo
 import co.dasa.domain.repository.AuthRepository
 import co.dasa.domain.request.auth.JoinOwnerRequest
 import co.dasa.domain.request.auth.JoinUserRequest
@@ -32,5 +35,14 @@ class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun joinOwner(joinOwnerRequest: JoinOwnerRequest) {
         authDataSource.joinOwner(joinOwnerRequest)
+    }
+
+    override suspend fun getUser(): UserInfo {
+        return authDataSource.getUser(tokenDataSource.getToken().token).toModel()
+    }
+
+    override suspend fun logout() {
+        tokenDataSource.deleteToken()
+        accountDataSource.deleteAccount()
     }
 }

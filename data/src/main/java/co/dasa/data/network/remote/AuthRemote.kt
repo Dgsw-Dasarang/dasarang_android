@@ -5,7 +5,8 @@ import co.dasa.data.network.response.LoginData
 import co.dasa.domain.request.auth.JoinOwnerRequest
 import co.dasa.domain.request.auth.JoinUserRequest
 import co.dasa.domain.request.auth.LoginRequest
-import com.stac.data.base.remote.RetrofitRemote
+import co.dasa.data.base.remote.RetrofitRemote
+import co.dasa.data.network.response.User
 
 class AuthRemote : RetrofitRemote<AuthApi>() {
     override val api: AuthApi
@@ -21,5 +22,9 @@ class AuthRemote : RetrofitRemote<AuthApi>() {
 
     suspend fun joinOwner(joinOwnerRequest: JoinOwnerRequest) {
         return api.joinOwner(joinOwnerRequest)
+    }
+
+    suspend fun getUser(token: String) : User {
+        return api.getUser("Bearer $token")
     }
 }

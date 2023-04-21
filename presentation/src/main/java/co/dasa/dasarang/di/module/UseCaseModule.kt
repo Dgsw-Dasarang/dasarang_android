@@ -3,10 +3,7 @@ package co.dasa.dasarang.di.module
 import co.dasa.domain.repository.AuthRepository
 import co.dasa.domain.repository.EducationRepository
 import co.dasa.domain.repository.TokenRepository
-import co.dasa.domain.usecases.auth.AuthUseCases
-import co.dasa.domain.usecases.auth.JoinOwner
-import co.dasa.domain.usecases.auth.JoinUser
-import co.dasa.domain.usecases.auth.Login
+import co.dasa.domain.usecases.auth.*
 import co.dasa.domain.usecases.education.EducationUseCases
 import co.dasa.domain.usecases.education.GetEducationAll
 import co.dasa.domain.usecases.token.DeleteToken
@@ -28,7 +25,9 @@ class UseCaseModule {
         AuthUseCases(
             login = Login(repository),
             joinUser = JoinUser(repository),
-            joinOwner = JoinOwner(repository)
+            joinOwner = JoinOwner(repository),
+            getUser = GetUser(repository),
+            logout = Logout(repository)
         )
 
     @Provides

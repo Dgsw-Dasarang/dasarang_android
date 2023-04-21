@@ -2,6 +2,7 @@ package co.dasa.dasarang.di.module
 
 import co.dasa.dasarang.di.OtherOkHttpClient
 import co.dasa.dasarang.di.OtherRemoteRetrofit
+import co.dasa.data.network.interceptor.ApiKeyInterceptor
 import co.dasa.data.network.interceptor.TokenInterceptor
 import co.dasa.data.network.url.DasaUrl
 import com.google.gson.Gson
@@ -32,12 +33,14 @@ class NetworkModule {
     @OtherOkHttpClient
     @Provides
     @Singleton
-    fun provideHttpClient(tokenInterceptor: TokenInterceptor): OkHttpClient {
+    fun provideHttpClient(tokenInterceptor: TokenInterceptor, apiKeyInterceptor: ApiKeyInterceptor): OkHttpClient {
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
         val okhttpBuilder = OkHttpClient().newBuilder()
             .addInterceptor(interceptor)
             .addInterceptor(tokenInterceptor)
+            .addInterceptor(apiKeyInterceptor)
+
         return okhttpBuilder.build()
     }
 

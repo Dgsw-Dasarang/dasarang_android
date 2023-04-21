@@ -1,7 +1,10 @@
-package com.stac.data.base.remote
+package co.dasa.data.base.remote
 
+import co.dasa.data.network.interceptor.ApiKeyInterceptor
+import co.dasa.data.network.interceptor.TokenInterceptor
 import co.dasa.data.network.url.DasaUrl
 import com.google.gson.GsonBuilder
+import com.stac.data.base.remote.BaseRemote
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -25,8 +28,9 @@ abstract class RetrofitRemote<SV> : BaseRemote<SV>() {
     private val client: OkHttpClient
         get() {
             val interceptor = HttpLoggingInterceptor()
+            val apiKeyInterceptor = ApiKeyInterceptor()
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-            val okHttpBuilder = OkHttpClient().newBuilder().addInterceptor(interceptor)
+            val okHttpBuilder = OkHttpClient().newBuilder().addInterceptor(interceptor).addInterceptor(apiKeyInterceptor)
             return okHttpBuilder.build()
         }
 }
