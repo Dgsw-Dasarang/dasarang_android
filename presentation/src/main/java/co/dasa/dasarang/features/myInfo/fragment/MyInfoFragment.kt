@@ -38,7 +38,6 @@ class MyInfoFragment : BaseFragment<FragmentMyinfoBinding, MyInfoViewModel>(R.la
             lifecycleScope.launchWhenStarted {
                 userState.collect { state ->
                     if (state.error.isNotBlank()) {
-                        //TODO 로그인으로 가라고 보여주기
                         binding.tvUserId.text = "로그인을 해주세요."
                         binding.btnLogout.visibility = View.GONE
                         binding.btnEditInfo.visibility = View.GONE
