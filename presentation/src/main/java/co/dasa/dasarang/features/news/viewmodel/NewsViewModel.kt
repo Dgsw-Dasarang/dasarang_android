@@ -2,6 +2,7 @@ package co.dasa.dasarang.features.news.viewmodel
 
 import androidx.lifecycle.viewModelScope
 import co.dasa.dasarang.base.BaseViewModel
+import co.dasa.dasarang.features.news.state.BoardState
 import co.dasa.dasarang.features.news.state.EducationState
 import co.dasa.dasarang.utils.MutableEventFlow
 import co.dasa.dasarang.utils.asEventFlow

@@ -1,9 +1,11 @@
 package co.dasa.dasarang.di.module
 
 import co.dasa.data.repository.AuthRepositoryImpl
+import co.dasa.data.repository.BoardRepositoryImpl
 import co.dasa.data.repository.EducationRepositoryImpl
 import co.dasa.data.repository.TokenRepositoryImpl
 import co.dasa.domain.repository.AuthRepository
+import co.dasa.domain.repository.BoardRepository
 import co.dasa.domain.repository.EducationRepository
 import co.dasa.domain.repository.TokenRepository
 import dagger.Module
@@ -26,4 +28,8 @@ class RepositoryModule {
     @Singleton
     @Provides
     fun provideEducationRepository(educationRepositoryImpl: EducationRepositoryImpl): EducationRepository = educationRepositoryImpl
+
+    @Singleton
+    @Provides
+    fun provideBoardRepository(boardRepositoryImpl: BoardRepositoryImpl): BoardRepository = boardRepositoryImpl
 }

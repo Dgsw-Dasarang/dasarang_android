@@ -12,4 +12,6 @@ class EducationRepositoryImpl @Inject constructor(
     override suspend fun getEducationAll(page: Int): EducationDatas {
         return educationDataSource.getEducationAll(page)
     }
+
+
 }

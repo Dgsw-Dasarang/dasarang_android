@@ -1,8 +1,8 @@
 package co.dasa.data.network.remote
 
 import co.dasa.data.network.api.EducationApi
-import co.dasa.domain.model.education.EducationDatas
 import co.dasa.data.base.remote.RetrofitRemote
+import co.dasa.domain.model.education.EducationDatas
 
 class EducationRemote : RetrofitRemote<EducationApi>() {
     override val api: EducationApi

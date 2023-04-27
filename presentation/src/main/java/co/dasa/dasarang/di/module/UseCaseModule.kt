@@ -1,9 +1,12 @@
 package co.dasa.dasarang.di.module
 
 import co.dasa.domain.repository.AuthRepository
+import co.dasa.domain.repository.BoardRepository
 import co.dasa.domain.repository.EducationRepository
 import co.dasa.domain.repository.TokenRepository
 import co.dasa.domain.usecases.auth.*
+import co.dasa.domain.usecases.board.EduBoardUseCases
+import co.dasa.domain.usecases.board.GetBoardData
 import co.dasa.domain.usecases.education.EducationUseCases
 import co.dasa.domain.usecases.education.GetEducationAll
 import co.dasa.domain.usecases.token.DeleteToken
@@ -44,5 +47,12 @@ class UseCaseModule {
     fun provideEducationUseCases(repository: EducationRepository): EducationUseCases =
         EducationUseCases(
             getEducationAll = GetEducationAll(repository)
+        )
+
+    @Provides
+    @Singleton
+    fun provideBoardUseCases(repository: BoardRepository): EduBoardUseCases =
+        EduBoardUseCases(
+            getBoardData = GetBoardData(repository)
         )
 }

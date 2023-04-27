@@ -4,8 +4,8 @@
     <data>
 
         <variable
-            name="vm"
-            type="co.dasa.dasarang.features.news.viewmodel.BoardViewModel" />
+            name="board"
+            type="co.dasa.domain.model.education.BoardData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -29,6 +29,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:text="@{board.title}"
             tools:text="학원공지공지공지공지공지공지" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

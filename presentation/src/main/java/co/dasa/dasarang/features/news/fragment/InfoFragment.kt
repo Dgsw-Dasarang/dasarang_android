@@ -7,7 +7,9 @@ import co.dasa.dasarang.base.BaseFragment
 import co.dasa.dasarang.databinding.FragmentInfoBinding
 import co.dasa.dasarang.features.news.viewmodel.InfoViewModel
 import co.dasa.domain.model.education.EducationData
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class InfoFragment : BaseFragment<FragmentInfoBinding, InfoViewModel>(R.layout.fragment_info) {
 
     override val viewModel: InfoViewModel by viewModels()
