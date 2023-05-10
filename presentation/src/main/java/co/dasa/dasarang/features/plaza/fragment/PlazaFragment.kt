@@ -13,7 +13,9 @@ import co.dasa.dasarang.base.BaseFragment
 import co.dasa.dasarang.databinding.FragmentPlazaBinding
 import co.dasa.dasarang.extensions.repeatOnStarted
 import co.dasa.dasarang.extensions.shortToast
+import co.dasa.dasarang.features.board.activity.OwnerBoardActivity
 import co.dasa.dasarang.features.main.activity.MainActivity
+import co.dasa.dasarang.features.news.adapter.BoardAdapter
 import co.dasa.dasarang.features.payment.activity.PaymentActivity
 import co.dasa.dasarang.features.plaza.adapter.ViewPagerAdapter
 import co.dasa.dasarang.features.plaza.viewmodel.PlazaViewModel
@@ -40,7 +42,6 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
             lifecycleScope.launchWhenStarted {
                 userState.collect { state ->
                     if (state.error.isNotBlank()) {
-
                         //TODO 로그인으로 가라고 보여주기
                     } else if (state.isUpdate) {
                         state.result.also {
@@ -105,7 +106,9 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
             }
             2 -> {
                 //게시판
-                //Activity 만들기
+                Intent(requireContext(), OwnerBoardActivity::class.java).run {
+                    startActivity(this)
+                }
             }
             3 -> {
                 //상담

@@ -196,14 +196,50 @@
             android:id="@+id/btn_logout"
             android:layout_width="140dp"
             android:layout_height="52dp"
-            android:layout_marginBottom="40dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/logout_btn_background"
             android:fontFamily="@font/pretendard_medium"
             android:onClick="@{() -> vm.logout()}"
             android:text="로그아웃"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_provision"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:onClick="@{() -> vm.moveInfo(1)}"
+            android:text="이용약관 / "
+            android:textColor="@color/gray"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@id/iv_call"
+            app:layout_constraintTop_toBottomOf="@id/iv_birth_line" />
+
+        <TextView
+            android:id="@+id/tv_policy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> vm.moveInfo(2)}"
+            android:text="개인정보취급방침"
+            android:textColor="@color/gray"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@id/tv_provision"
+            app:layout_constraintTop_toTopOf="@id/tv_provision" />
+
+        <TextView
+            android:id="@+id/tv_app_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/company_info"
+            android:textColor="@color/gray"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_provision" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

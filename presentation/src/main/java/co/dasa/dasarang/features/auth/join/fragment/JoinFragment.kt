@@ -13,6 +13,7 @@ import co.dasa.dasarang.databinding.FragmentJoinBinding
 import co.dasa.dasarang.extensions.repeatOnStarted
 import co.dasa.dasarang.extensions.shortToast
 import co.dasa.dasarang.features.auth.join.viewmodel.JoinViewModel
+import co.dasa.data.network.url.DasaUrl
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -62,7 +63,7 @@ class JoinFragment : BaseFragment<FragmentJoinBinding, JoinViewModel>(R.layout.f
 
     private fun moveAgree() {
         //TODO webView
-        Intent(Intent.ACTION_VIEW, Uri.parse("https://server.dasaedu.com/policy.html")).run {
+        Intent(Intent.ACTION_VIEW, Uri.parse(DasaUrl.PROVISION)).run {
             startActivity(this)
         }
     }

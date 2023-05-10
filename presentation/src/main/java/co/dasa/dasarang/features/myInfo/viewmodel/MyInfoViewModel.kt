@@ -42,6 +42,10 @@ class MyInfoViewModel @Inject constructor(
         event(Event.Modify)
     }
 
+    fun moveInfo(cnt: Int) {
+        event(Event.MoveInfo(cnt))
+    }
+
     fun getUserInfo() {
         _userState.value = UserState(error = "")
         authUseCases.getUser(Unit).divideResult(
@@ -57,6 +61,8 @@ class MyInfoViewModel @Inject constructor(
 
     sealed class Event {
         data class ShowToast(val text: String) : Event()
+
+        data class MoveInfo(val cnt: Int) : Event()
         object Logout : Event()
 
         object Modify : Event()

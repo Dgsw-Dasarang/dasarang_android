@@ -13,4 +13,8 @@ object DasaUrl {
     const val EDUCATION_ALL = "education/list"
 
     const val EDUCATAON_BOARD_ACADEMY = "post/list/{acaNum}"
+
+    const val PROVISION = "https://server.dasaedu.com/provision.html"
+    const val POLICY_USER = "https://server.dasaedu.com/policy.html"
+    const val POLICY_OWNER = "https://server.dasaedu.com/policy-owner.html"
 }

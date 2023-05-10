@@ -1,5 +1,7 @@
 package co.dasa.dasarang.features.myInfo.fragment
 
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -14,6 +16,7 @@ import co.dasa.dasarang.extensions.repeatOnStarted
 import co.dasa.dasarang.extensions.shortToast
 import co.dasa.dasarang.features.main.activity.MainActivity
 import co.dasa.dasarang.features.myInfo.viewmodel.MyInfoViewModel
+import co.dasa.data.network.url.DasaUrl
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -41,6 +44,8 @@ class MyInfoFragment : BaseFragment<FragmentMyinfoBinding, MyInfoViewModel>(R.la
                         binding.tvUserId.text = "로그인을 해주세요."
                         binding.btnLogout.visibility = View.GONE
                         binding.btnEditInfo.visibility = View.GONE
+                        binding.tvProvision.visibility = View.GONE
+                        binding.tvPolicy.visibility = View.GONE
                     } else if (state.isUpdate) {
                         state.result.also {
                             binding.tvUserId.text = it!!.userId
@@ -61,6 +66,7 @@ class MyInfoFragment : BaseFragment<FragmentMyinfoBinding, MyInfoViewModel>(R.la
             is MyInfoViewModel.Event.ShowToast -> Toast.makeText(requireContext(), event.text, Toast.LENGTH_SHORT).show()
             is MyInfoViewModel.Event.Logout -> logout()
             is MyInfoViewModel.Event.Modify -> modify()
+            is MyInfoViewModel.Event.MoveInfo -> moveInfo(event.cnt)
         }
     }
 
@@ -86,6 +92,40 @@ class MyInfoFragment : BaseFragment<FragmentMyinfoBinding, MyInfoViewModel>(R.la
             }
             else -> {
                 findNavController().navigate(R.id.action_main_info_to_modify_info)
+            }
+        }
+    }
+
+    private fun moveInfo(cnt: Int) {
+        val args = arguments?.getString("view")
+        when(args) {
+            "owner" -> {
+                when(cnt) {
+                    1 -> {
+                        Intent(Intent.ACTION_VIEW, Uri.parse(DasaUrl.PROVISION)).run {
+                            startActivity(this)
+                        }
+                    }
+                    2 -> {
+                        Intent(Intent.ACTION_VIEW, Uri.parse(DasaUrl.POLICY_USER)).run {
+                            startActivity(this)
+                        }
+                    }
+                }
+            }
+            else -> {
+                when(cnt) {
+                    1 -> {
+                        Intent(Intent.ACTION_VIEW, Uri.parse(DasaUrl.PROVISION)).run {
+                            startActivity(this)
+                        }
+                    }
+                    2 -> {
+                        Intent(Intent.ACTION_VIEW, Uri.parse(DasaUrl.POLICY_OWNER)).run {
+                            startActivity(this)
+                        }
+                    }
+                }
             }
         }
     }
