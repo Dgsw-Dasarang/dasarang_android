@@ -1,14 +1,15 @@
 package co.dasa.dasarang.di.module
 
-import co.dasa.domain.repository.AuthRepository
-import co.dasa.domain.repository.BoardRepository
-import co.dasa.domain.repository.EducationRepository
-import co.dasa.domain.repository.TokenRepository
+import co.dasa.domain.repository.*
 import co.dasa.domain.usecases.auth.*
 import co.dasa.domain.usecases.board.EduBoardUseCases
 import co.dasa.domain.usecases.board.GetBoardData
 import co.dasa.domain.usecases.education.EducationUseCases
 import co.dasa.domain.usecases.education.GetEducationAll
+import co.dasa.domain.usecases.payment.CanclePayment
+import co.dasa.domain.usecases.payment.GetPayment
+import co.dasa.domain.usecases.payment.Payment
+import co.dasa.domain.usecases.payment.PaymentUseCases
 import co.dasa.domain.usecases.token.DeleteToken
 import co.dasa.domain.usecases.token.GetToken
 import co.dasa.domain.usecases.token.TokenUseCases
@@ -54,5 +55,14 @@ class UseCaseModule {
     fun provideBoardUseCases(repository: BoardRepository): EduBoardUseCases =
         EduBoardUseCases(
             getBoardData = GetBoardData(repository)
+        )
+
+    @Provides
+    @Singleton
+    fun providePaymentUseCases(repository: PaymentRepository): PaymentUseCases =
+        PaymentUseCases(
+            payment = Payment(repository),
+            getPayment = GetPayment(repository),
+            canclePayment = CanclePayment(repository)
         )
 }

@@ -2,11 +2,9 @@ package co.dasa.dasarang.features.news.viewmodel
 
 import androidx.lifecycle.viewModelScope
 import co.dasa.dasarang.base.BaseViewModel
-import co.dasa.dasarang.features.auth.login.state.LoginState
 import co.dasa.dasarang.features.news.state.BoardState
 import co.dasa.dasarang.utils.MutableEventFlow
 import co.dasa.dasarang.utils.asEventFlow
-import co.dasa.domain.usecases.auth.Login
 import co.dasa.domain.usecases.board.EduBoardUseCases
 import co.dasa.domain.usecases.board.GetBoardData
 import dagger.hilt.android.lifecycle.HiltViewModel

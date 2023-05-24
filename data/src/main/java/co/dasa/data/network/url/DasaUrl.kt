@@ -12,6 +12,10 @@ object DasaUrl {
 
     const val EDUCATION_ALL = "education/list"
 
+    const val PAYMENT = "payment"
+    const val GET_PAYMENT = "payment/check"
+    const val CANCLE_PAYMENT = "payment/cancel"
+
     const val EDUCATAON_BOARD_ACADEMY = "post/list/{acaNum}"
 
     const val PROVISION = "https://server.dasaedu.com/provision.html"

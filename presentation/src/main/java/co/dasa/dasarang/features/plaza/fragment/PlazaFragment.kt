@@ -34,7 +34,10 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
             viewModel.eventFlow.collect { event -> handleEvent(event) }
         }
         viewModel.getUser()
+        viewModel.getPayment()
         collectUserState()
+        collectPaymentState()
+        collectCanclePaymentState()
     }
 
     private fun collectUserState() {
@@ -46,7 +49,7 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
                     } else if (state.isUpdate) {
                         state.result.also {
                             var role = ""
-                            role = if(it!!.ownerNumber.isNullOrBlank()){
+                            role = if (it!!.ownerNumber.isNullOrBlank()) {
                                 "ROLE_USER"
                             } else {
                                 "ROLE_OWNER"
@@ -60,9 +63,53 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
         }
     }
 
+    private fun collectPaymentState() {
+        with(viewModel) {
+            lifecycleScope.launchWhenStarted {
+                getPaymentState.collect { state ->
+                    if (state.error.isNotBlank()) {
+                        shortToast("알수 없는 에러")
+                    } else if (state.isUpdate) {
+                        state.result.also {
+                            if (it!!.confirm) {
+                                binding.tvPay.visibility = View.GONE
+                                binding.tvCanclePay.visibility = View.VISIBLE
+                            } else {
+                                binding.tvPay.visibility = View.VISIBLE
+                                binding.tvCanclePay.visibility = View.GONE
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun collectCanclePaymentState() {
+        with(viewModel) {
+            lifecycleScope.launchWhenStarted {
+                canclePaymentState.collect { state ->
+                    if (state.error.isNotBlank()) {
+                        shortToast("알수 없는 에러")
+                    } else if (state.isUpdate) {
+                        state.result.also {
+                            shortToast("성공적으로 결제 취소가 이루어졌습니다.")
+                            binding.tvPay.visibility = View.VISIBLE
+                            binding.tvCanclePay.visibility = View.GONE
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     private fun handleEvent(event: PlazaViewModel.Event) {
         when (event) {
-            is PlazaViewModel.Event.ShowToast -> Toast.makeText(requireContext(), event.text, Toast.LENGTH_SHORT).show()
+            is PlazaViewModel.Event.ShowToast -> Toast.makeText(
+                requireContext(),
+                event.text,
+                Toast.LENGTH_SHORT
+            ).show()
             is PlazaViewModel.Event.MoveScreen -> checkMove(event.cnt)
             is PlazaViewModel.Event.Login -> moveLogin()
             is PlazaViewModel.Event.MoveScreenOwner -> checkMoveOwner(event.count)
@@ -72,25 +119,25 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
     private fun settingView(role: String, id: String) {
 
 
-            binding.groupLogin.visibility = View.GONE
-            binding.groupProfile.visibility = View.VISIBLE
+        binding.groupLogin.visibility = View.GONE
+        binding.groupProfile.visibility = View.VISIBLE
 
-            binding.tvUserId.text = id
+        binding.tvUserId.text = id
 
-            when (role) {
-                "ROLE_USER" -> {
-                    binding.groupPlazaUser.visibility = View.VISIBLE
-                    binding.groupPlazaOwner.visibility = View.GONE
-                }
-                "ROLE_OWNER" -> {
-                    (activity as? MainActivity)?.setNavVisible(false)
-                    binding.groupPlazaUser.visibility = View.GONE
-                    binding.groupPlazaOwner.visibility = View.VISIBLE
-                }
-                else -> {
-                    shortToast("알수 없는 권한")
-                }
+        when (role) {
+            "ROLE_USER" -> {
+                binding.groupPlazaUser.visibility = View.VISIBLE
+                binding.groupPlazaOwner.visibility = View.GONE
             }
+            "ROLE_OWNER" -> {
+                (activity as? MainActivity)?.setNavVisible(false)
+                binding.groupPlazaUser.visibility = View.GONE
+                binding.groupPlazaOwner.visibility = View.VISIBLE
+            }
+            else -> {
+                shortToast("알수 없는 권한")
+            }
+        }
     }
 
     private fun checkMove(cnt: Int) {
@@ -99,7 +146,7 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
     }
 
     private fun checkMoveOwner(count: Int) {
-        when(count) {
+        when (count) {
             1 -> {
                 //내 학원
                 //물어보기
@@ -120,8 +167,13 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
                 findNavController().navigate(R.id.action_main_plaza_to_main_info, bundle)
             }
             5 -> {
-                Intent(requireContext(), PaymentActivity::class.java).run {
-                    startActivity(this)
+                if (binding.tvPay.visibility == View.VISIBLE) {
+                    Intent(requireContext(), PaymentActivity::class.java).run {
+                        startActivity(this)
+                    }
+                } else {
+                    //정기결제 취소
+                    viewModel.canclePayment()
                 }
             }
         }

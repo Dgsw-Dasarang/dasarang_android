@@ -1,9 +1,6 @@
 package co.dasa.dasarang.di.module
 
-import co.dasa.data.network.remote.AuthRemote
-import co.dasa.data.network.remote.BoardRemote
-import co.dasa.data.network.remote.EducationRemote
-import co.dasa.data.network.remote.TokenRemote
+import co.dasa.data.network.remote.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,4 +25,8 @@ class RemoteModule {
     @Singleton
     @Provides
     fun provideBoardRemote(): BoardRemote = BoardRemote()
+
+    @Singleton
+    @Provides
+    fun providePaymentRemote(): PaymentRemote = PaymentRemote()
 }

@@ -38,7 +38,9 @@ class AuthRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getUser(): UserInfo {
-        return authDataSource.getUser(tokenDataSource.getToken().token).toModel()
+        val token = tokenDataSource.getToken().token
+        Log.d("token : ", token)
+        return authDataSource.getUser(token).toModel()
     }
 
     override suspend fun logout() {
