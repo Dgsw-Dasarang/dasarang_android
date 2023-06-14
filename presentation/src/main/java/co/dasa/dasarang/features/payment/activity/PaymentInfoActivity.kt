@@ -1,14 +1,16 @@
 package co.dasa.dasarang.features.payment.activity
 
+import android.content.Intent
 import androidx.activity.viewModels
 import co.dasa.dasarang.R
 import co.dasa.dasarang.base.BaseActivity
 import co.dasa.dasarang.databinding.ActivityPaymentInfoBinding
 import co.dasa.dasarang.extensions.repeatOnStarted
 import co.dasa.dasarang.features.payment.viewmodel.PaymentInfoViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PaymentInfoActivity : BaseActivity<ActivityPaymentInfoBinding, PaymentInfoViewModel>(R.layout.activity_payment_info) {
-
     override val viewModel: PaymentInfoViewModel by viewModels()
 
     override fun start() {
@@ -25,5 +27,8 @@ class PaymentInfoActivity : BaseActivity<ActivityPaymentInfoBinding, PaymentInfo
 
     private fun payment() {
         //결제창으로
+        Intent(this, PaymentActivity::class.java).run {
+            startActivity(this)
+        }
     }
 }

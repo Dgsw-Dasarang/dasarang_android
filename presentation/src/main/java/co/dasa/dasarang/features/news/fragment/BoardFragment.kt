@@ -1,8 +1,11 @@
 package co.dasa.dasarang.features.news.fragment
 
+import android.util.Log
+import android.view.KeyEvent
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import co.dasa.dasarang.R
 import co.dasa.dasarang.base.BaseFragment
 import co.dasa.dasarang.databinding.FragmentBoardBinding
@@ -17,13 +20,27 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class BoardFragment : BaseFragment<FragmentBoardBinding, BoardViewModel>(R.layout.fragment_board) {
+    private lateinit var data: EducationData
 
     override val viewModel: BoardViewModel by viewModels()
     private lateinit var boardAdapter: BoardAdapter
 
     override fun start() {
+        data = arguments?.getSerializable("data") as EducationData
         collectBoardState()
         setBoardAdapter()
+        setListener()
+    }
+
+    private fun setListener() {
+        binding.recyclerBoard.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                if (!binding.recyclerBoard.canScrollVertically(1)) {
+                    viewModel.doData(boardAdapter.itemCount / 10 + 1, data.academyNumber)
+                }
+            }
+        })
     }
 
     private fun collectBoardState() {
@@ -31,10 +48,14 @@ class BoardFragment : BaseFragment<FragmentBoardBinding, BoardViewModel>(R.layou
             lifecycleScope.launchWhenStarted {
                 boardState.collect { state ->
                     if (state.isUpdate) {
-                        boardAdapter.submitList(state.result!!.list)
+                        if(state.result!!.list.isNullOrEmpty()) {
+                            boardAdapter.submitList(mutableListOf(BoardData("", "", listOf(Image("", "")), 0, "게시물이 비어있습니다."), BoardData("", "", listOf(Image("", "")), 0, "게시물이 비어있습니다."), BoardData("", "", listOf(Image("", "")), 0, "게시물이 비어있습니다.")))
+                        } else {
+                            boardAdapter.submitList((boardAdapter.currentList + state.result.list).distinct())
+                        }
                     } else if (state.error.isNotBlank()) {
                         boardAdapter.submitList(mutableListOf(BoardData("", "", listOf(Image("", "")), 0, "게시물이 비어있습니다."), BoardData("", "", listOf(Image("", "")), 0, "게시물이 비어있습니다."), BoardData("", "", listOf(Image("", "")), 0, "게시물이 비어있습니다.")))
-                        //shortToast(state.error)
+                        shortToast(state.error)
                     }
                 }
             }
@@ -44,7 +65,6 @@ class BoardFragment : BaseFragment<FragmentBoardBinding, BoardViewModel>(R.layou
     private fun setBoardAdapter() {
         boardAdapter = BoardAdapter()
         binding.recyclerBoard.adapter = boardAdapter
-        val data = arguments?.getSerializable("data") as EducationData
         viewModel.doData(1, data.academyNumber)
     }
 }

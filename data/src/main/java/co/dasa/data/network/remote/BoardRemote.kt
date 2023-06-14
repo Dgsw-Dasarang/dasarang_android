@@ -11,6 +11,6 @@ class BoardRemote : RetrofitRemote<BoardApi>() {
         get() = createApi(BoardApi::class.java)
 
     suspend fun getEducationByAcademyNum(params: Params): BoardDatas {
-        return api.getEducationByAcademyNum(params.page, params.size, params.aca_num)
+        return api.getEducationByAcademyNum(params.aca_num, params.page, params.size)
     }
 }

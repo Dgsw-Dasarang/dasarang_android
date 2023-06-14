@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.RecyclerView
 import co.dasa.dasarang.R
 import co.dasa.dasarang.base.BaseFragment
 import co.dasa.dasarang.databinding.FragmentNewsBinding
@@ -29,9 +30,20 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsViewModel>(R.layout.f
         setView()
         //setEduNewsAdapter()
         collectEducationState()
+        setListener()
     }
 
-    //TODO news adapter 만들고 api 받아서 연결 해주기
+    private fun setListener() {
+        binding.recyclerEduNews.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                if (!binding.recyclerEduNews.canScrollVertically(1)) {
+                    viewModel.getData(eduNewsAdapter.itemCount / 10 + 1)
+                }
+            }
+        })
+    }
+
     private fun setEduNewsAdapter() {
         eduNewsAdapter = EduNewsAdapter()
         binding.recyclerEduNews.adapter = eduNewsAdapter
@@ -82,7 +94,7 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsViewModel>(R.layout.f
                 educationState.collect { state ->
                     if (state.isUpdate) {
                         state.result.let {
-                            eduNewsAdapter.submitList(it?.list?.toMutableList())
+                            eduNewsAdapter.submitList((eduNewsAdapter.currentList + it?.list!!.toMutableList()).distinct().toMutableList())
                         }
                     }
                 }

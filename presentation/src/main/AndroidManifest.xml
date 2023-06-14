@@ -35,6 +35,11 @@
             android:exported="false">
 
         </activity>
+        <activity
+            android:name=".features.payment.activity.PaymentInfoActivity"
+            android:exported="false">
+
+        </activity>
     </application>
 
 </manifest>

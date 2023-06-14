@@ -17,6 +17,7 @@ import co.dasa.dasarang.features.board.activity.OwnerBoardActivity
 import co.dasa.dasarang.features.main.activity.MainActivity
 import co.dasa.dasarang.features.news.adapter.BoardAdapter
 import co.dasa.dasarang.features.payment.activity.PaymentActivity
+import co.dasa.dasarang.features.payment.activity.PaymentInfoActivity
 import co.dasa.dasarang.features.plaza.adapter.ViewPagerAdapter
 import co.dasa.dasarang.features.plaza.viewmodel.PlazaViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -168,11 +169,10 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
             }
             5 -> {
                 if (binding.tvPay.visibility == View.VISIBLE) {
-                    Intent(requireContext(), PaymentActivity::class.java).run {
+                    Intent(requireContext(), PaymentInfoActivity::class.java).run {
                         startActivity(this)
                     }
                 } else {
-                    //정기결제 취소
                     viewModel.canclePayment()
                 }
             }

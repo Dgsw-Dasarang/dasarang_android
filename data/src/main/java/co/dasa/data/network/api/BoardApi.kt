@@ -9,8 +9,8 @@ import retrofit2.http.Query
 interface BoardApi {
     @GET(DasaUrl.EDUCATAON_BOARD_ACADEMY)
     suspend fun getEducationByAcademyNum(
+        @Path("aca-number") acaNumber: String,
         @Query("page") page: Int,
-        @Query("size") size: Int,
-        @Path("aca-number") acaNumber: String
+        @Query("size") size: Int
     ): BoardDatas
 }
