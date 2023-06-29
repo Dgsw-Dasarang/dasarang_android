@@ -28,7 +28,6 @@ class NewsFragment : BaseFragment<FragmentNewsBinding, NewsViewModel>(R.layout.f
             viewModel.eventFlow.collect { event -> handleEvent(event) }
         }
         setView()
-        //setEduNewsAdapter()
         collectEducationState()
         setListener()
     }

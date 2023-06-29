@@ -35,7 +35,6 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
             viewModel.eventFlow.collect { event -> handleEvent(event) }
         }
         viewModel.getUser()
-        viewModel.getPayment()
         collectUserState()
         collectPaymentState()
         collectCanclePaymentState()
@@ -50,9 +49,10 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
                     } else if (state.isUpdate) {
                         state.result.also {
                             var role = ""
-                            role = if (it!!.ownerNumber.isNullOrBlank()) {
+                            role = if(it!!.ownerNumber.isNullOrBlank()) {
                                 "ROLE_USER"
                             } else {
+                                viewModel.getPayment()
                                 "ROLE_OWNER"
                             }
                             settingView(role, it.userId)
@@ -118,8 +118,6 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
     }
 
     private fun settingView(role: String, id: String) {
-
-
         binding.groupLogin.visibility = View.GONE
         binding.groupProfile.visibility = View.VISIBLE
 

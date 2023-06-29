@@ -11,7 +11,6 @@ import co.dasa.dasarang.base.BaseFragment
 import co.dasa.dasarang.databinding.FragmentBoardBinding
 import co.dasa.dasarang.extensions.shortToast
 import co.dasa.dasarang.features.news.adapter.BoardAdapter
-import co.dasa.dasarang.features.news.adapter.EduNewsAdapter
 import co.dasa.dasarang.features.news.viewmodel.BoardViewModel
 import co.dasa.domain.model.education.BoardData
 import co.dasa.domain.model.education.EducationData
