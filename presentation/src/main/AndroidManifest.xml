@@ -40,6 +40,10 @@
             android:name=".features.board.activity.OwnerBoardActivity"
             android:exported="false">
         </activity>
+        <activity android:name=".features.news.fragment.OtherNewsActivity"
+            android:exported="false">
+
+        </activity>
     </application>
 
 </manifest>
