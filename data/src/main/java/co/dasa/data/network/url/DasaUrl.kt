@@ -7,16 +7,21 @@ object DasaUrl {
     const val JOIN_OWNER = "auth/owner/sign-up"
     const val GET_USER = "user"
 
-    const val REFRESH_TOKEN = ""
-    const val API_KEY = "exoid9n21oidx7duf3nfdsaf8dfi3ncdsa98f3hfcbusadf8i23jncds9fi23kjfmndsug89v0ik2m3ifndsf823kfjndsfydug898sdifk23mff39fds"
+    const val REFRESH_TOKEN = "auth/refresh"
+    const val API_KEY = "ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKemRXSWlPaUxzbFlqcms1enJvWnpzbmJUcms1d2lMQ0p5WldGemIyNGlPaUxzbFlqcms1enJvWnpzbmJUcms1d2c2ckNjNjdDY0lpd2lhV0YwSWpveE5qa3pNakEyTURJeUxDSmxlSEFpT2pFMk9UTXlNRGcyTVRSOS51N2ptd2psYnBWc3hTNXlmbkRGOUNRQ2JsVjhqdkprVVN0XzZxQVk5OGtNPw=="
 
     const val EDUCATION_ALL = "education/list"
+
+    const val NEWS_COLUMN = "news/list/column"
+
+    const val WRITE_COMMENT_NEWS = "comment/news/{id}"
+    const val GET_COMMENT_NEWS = "comment/news/{id}"
 
     const val PAYMENT = "payment"
     const val GET_PAYMENT = "payment/check"
     const val CANCLE_PAYMENT = "payment/cancel"
 
-    const val EDUCATAON_BOARD_ACADEMY = "post/list/{acaNum}"
+    const val EDUCATAON_BOARD_ACADEMY = "post/list/{aca-number}"
 
     const val PROVISION = "https://server.dasaedu.com/provision.html"
     const val POLICY_USER = "https://server.dasaedu.com/policy.html"

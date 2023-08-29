@@ -2,6 +2,7 @@ package co.dasa.data.network.api
 
 import co.dasa.data.network.url.DasaUrl
 import co.dasa.domain.model.education.EducationDatas
+import co.dasa.domain.model.news.NewsListData
 import retrofit2.http.GET
 import retrofit2.http.Query
 

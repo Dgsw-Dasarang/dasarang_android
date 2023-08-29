@@ -40,7 +40,8 @@
             android:name=".features.board.activity.OwnerBoardActivity"
             android:exported="false">
         </activity>
-        <activity android:name=".features.news.fragment.OtherNewsActivity"
+
+        <activity android:name=".features.news.activity.OtherNewsActivity"
             android:exported="false">
 
         </activity>

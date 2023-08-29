@@ -7,7 +7,7 @@
 
         <variable
             name="news"
-            type="co.dasa.domain.model.news.NewsData" />
+            type="co.dasa.domain.model.news.OtherNewsData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

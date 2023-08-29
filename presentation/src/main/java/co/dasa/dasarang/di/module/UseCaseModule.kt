@@ -6,6 +6,10 @@ import co.dasa.domain.usecases.board.EduBoardUseCases
 import co.dasa.domain.usecases.board.GetBoardData
 import co.dasa.domain.usecases.education.EducationUseCases
 import co.dasa.domain.usecases.education.GetEducationAll
+import co.dasa.domain.usecases.news.GetCommentNews
+import co.dasa.domain.usecases.news.GetNewsColumn
+import co.dasa.domain.usecases.news.NewsUseCases
+import co.dasa.domain.usecases.news.WriteCommentNews
 import co.dasa.domain.usecases.payment.CanclePayment
 import co.dasa.domain.usecases.payment.GetPayment
 import co.dasa.domain.usecases.payment.Payment
@@ -64,5 +68,14 @@ class UseCaseModule {
             payment = Payment(repository),
             getPayment = GetPayment(repository),
             canclePayment = CanclePayment(repository)
+        )
+
+    @Provides
+    @Singleton
+    fun provideNewsUseCases(repository: NewsRepository): NewsUseCases =
+        NewsUseCases(
+            getNewsColumn = GetNewsColumn(repository),
+            getCommentNews = GetCommentNews(repository),
+            writeCommentNews = WriteCommentNews(repository)
         )
 }

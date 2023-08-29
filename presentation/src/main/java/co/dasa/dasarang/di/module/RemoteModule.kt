@@ -29,4 +29,8 @@ class RemoteModule {
     @Singleton
     @Provides
     fun providePaymentRemote(): PaymentRemote = PaymentRemote()
+
+    @Singleton
+    @Provides
+    fun provideNewsRemote(): NewsRemote = NewsRemote()
 }

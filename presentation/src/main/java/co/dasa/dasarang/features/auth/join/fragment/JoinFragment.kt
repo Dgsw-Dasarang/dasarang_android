@@ -17,7 +17,7 @@ import co.dasa.data.network.url.DasaUrl
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class JoinFragment : BaseFragment<FragmentJoinBinding, JoinViewModel>(R.layout.fragment_join) {
+class   JoinFragment : BaseFragment<FragmentJoinBinding, JoinViewModel>(R.layout.fragment_join) {
 
     override val viewModel: JoinViewModel by viewModels()
 

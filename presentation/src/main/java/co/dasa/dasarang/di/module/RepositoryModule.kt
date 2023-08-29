@@ -30,4 +30,8 @@ class RepositoryModule {
     @Singleton
     @Provides
     fun providePaymentRepository(paymentRepositoryImpl: PaymentRepositoryImpl): PaymentRepository = paymentRepositoryImpl
+
+    @Singleton
+    @Provides
+    fun provideNewsRepository(newsRepositoryImpl: NewsRepositoryImpl): NewsRepository = newsRepositoryImpl
 }
