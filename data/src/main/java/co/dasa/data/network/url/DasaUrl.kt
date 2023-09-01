@@ -11,6 +11,7 @@ object DasaUrl {
     const val API_KEY = "ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKemRXSWlPaUxzbFlqcms1enJvWnpzbmJUcms1d2lMQ0p5WldGemIyNGlPaUxzbFlqcms1enJvWnpzbmJUcms1d2c2ckNjNjdDY0lpd2lhV0YwSWpveE5qa3pNakEyTURJeUxDSmxlSEFpT2pFMk9UTXlNRGcyTVRSOS51N2ptd2psYnBWc3hTNXlmbkRGOUNRQ2JsVjhqdkprVVN0XzZxQVk5OGtNPw=="
 
     const val EDUCATION_ALL = "education/list"
+    const val EDUCATION_NUM = "education/num/{academy-number}"
 
     const val NEWS_COLUMN = "news/list/column"
 

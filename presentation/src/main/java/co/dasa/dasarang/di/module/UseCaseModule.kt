@@ -6,6 +6,7 @@ import co.dasa.domain.usecases.board.EduBoardUseCases
 import co.dasa.domain.usecases.board.GetBoardData
 import co.dasa.domain.usecases.education.EducationUseCases
 import co.dasa.domain.usecases.education.GetEducationAll
+import co.dasa.domain.usecases.education.GetEducationByNum
 import co.dasa.domain.usecases.news.GetCommentNews
 import co.dasa.domain.usecases.news.GetNewsColumn
 import co.dasa.domain.usecases.news.NewsUseCases
@@ -51,7 +52,8 @@ class UseCaseModule {
     @Singleton
     fun provideEducationUseCases(repository: EducationRepository): EducationUseCases =
         EducationUseCases(
-            getEducationAll = GetEducationAll(repository)
+            getEducationAll = GetEducationAll(repository),
+            getEducationByNum = GetEducationByNum(repository)
         )
 
     @Provides

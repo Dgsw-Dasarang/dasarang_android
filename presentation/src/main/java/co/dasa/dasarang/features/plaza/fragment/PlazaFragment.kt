@@ -15,6 +15,7 @@ import co.dasa.dasarang.extensions.repeatOnStarted
 import co.dasa.dasarang.extensions.shortToast
 import co.dasa.dasarang.features.board.activity.OwnerBoardActivity
 import co.dasa.dasarang.features.main.activity.MainActivity
+import co.dasa.dasarang.features.myInfo.activity.MyAcademyActivity
 import co.dasa.dasarang.features.news.adapter.BoardAdapter
 import co.dasa.dasarang.features.payment.activity.PaymentActivity
 import co.dasa.dasarang.features.payment.activity.PaymentInfoActivity
@@ -147,8 +148,9 @@ class PlazaFragment : BaseFragment<FragmentPlazaBinding, PlazaViewModel>(R.layou
     private fun checkMoveOwner(count: Int) {
         when (count) {
             1 -> {
-                //내 학원
-                //물어보기
+                Intent(requireContext(), MyAcademyActivity::class.java).run {
+                    startActivity(this)
+                }
             }
             2 -> {
                 //게시판

@@ -4,5 +4,6 @@ data class LoginData(
     val accessToken: String,
     val name: String,
     val refreshToken: String,
-    val type: String
+    val type: String,
+    val status: String
 )

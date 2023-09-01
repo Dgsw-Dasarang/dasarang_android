@@ -1,11 +1,11 @@
 import org.gradle.api.JavaVersion
 
 object AppConfig {
-    const val compileSdk = 32
-    const val minSdk = 26
-    const val targetSdk = 32
-    const val versionCode = 5
-    const val versionName = "1.0.4"
+    const val compileSdk = 33
+    const val minSdk = 28
+    const val targetSdk = 33
+    const val versionCode = 6
+    const val versionName = "1.0.5"
 
     const val appId = "co.dasa.dasarang"
     const val pathData = "co.dasa.dasarang.data"

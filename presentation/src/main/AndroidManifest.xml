@@ -17,34 +17,32 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".features.myInfo.activity.MyAcademyActivity"
+            android:exported="false" />
+        <activity
             android:name=".features.main.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".features.news.activity.DetailActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".features.payment.activity.PaymentActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".features.payment.activity.PaymentInfoActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".features.board.activity.OwnerBoardActivity"
-            android:exported="false">
-        </activity>
-
-        <activity android:name=".features.news.activity.OtherNewsActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
+        <activity
+            android:name=".features.news.activity.OtherNewsActivity"
+            android:exported="false"></activity>
     </application>
 
 </manifest>

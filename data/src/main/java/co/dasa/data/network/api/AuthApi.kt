@@ -29,6 +29,6 @@ interface AuthApi {
 
     @GET(DasaUrl.GET_USER)
     suspend fun getUser(
-        @Header("Authorization") token: String,
+        @Header("Authorization") token: String
     ): User
 }

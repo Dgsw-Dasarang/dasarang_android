@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="co.dasa.dasarang.features.myInfo.viewmodel.MyAcademyViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".features.myInfo.activity.MyAcademyActivity"
+        android:background="@color/background">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="12dp"
+                android:onClick="@{() -> vm.back()}"
+                android:src="@drawable/ic_round_arrow_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_modify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/pretendard_medium"
+                android:text="내 학원"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_back"
+                app:layout_constraintStart_toEndOf="@id/iv_back"
+                app:layout_constraintTop_toTopOf="@id/iv_back" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/body_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="26dp"
+                android:background="@drawable/news_list_background"
+                android:paddingBottom="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_back"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <TextView
+                    android:id="@+id/tv_academy_name_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="40dp"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:text="학원명"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:paddingVertical="10dp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/tv_academy_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/edit_auth_background"
+                    android:fontFamily="@font/pretendard_regular"
+                    tools:text="봄날 수학학원"
+                    android:singleLine="true"
+                    android:paddingHorizontal="18dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:textSize="14sp"
+                    app:layout_constraintDimensionRatio="W, 21:151"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_academy_name_title" />
+
+                <TextView
+                    android:id="@+id/tv_academy_subject_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:text="교습과정목록명"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_academy_name" />
+
+                <TextView
+                    android:paddingVertical="10dp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/tv_academy_subject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/edit_auth_background"
+                    android:fontFamily="@font/pretendard_regular"
+                    tools:text="수학(고급)"
+                    android:paddingHorizontal="18dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:textSize="14sp"
+                    app:layout_constraintDimensionRatio="W, 21:151"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_academy_subject_title" />
+
+                <TextView
+                    android:id="@+id/tv_academy_state_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:text="등록상태명"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_academy_subject" />
+
+                <TextView
+                    android:paddingVertical="10dp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/tv_academy_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/edit_auth_background"
+                    android:fontFamily="@font/pretendard_regular"
+                    tools:text="개원"
+                    android:singleLine="true"
+                    android:paddingHorizontal="18dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:textSize="14sp"
+                    app:layout_constraintDimensionRatio="W, 21:151"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_academy_state_title" />
+
+                <TextView
+                    android:id="@+id/tv_academy_price_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:text="인당수강료내용"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_academy_state" />
+
+                <TextView
+                    android:paddingVertical="10dp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/tv_academy_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/edit_auth_background"
+                    android:fontFamily="@font/pretendard_regular"
+                    tools:text="수학(초등):140000\n수학(중등):180000\n수학(고등):250000"
+                    android:paddingHorizontal="18dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:textSize="14sp"
+                    app:layout_constraintDimensionRatio="W, 21:151"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_academy_price_title" />
+
+                <TextView
+                    android:id="@+id/tv_academy_date_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:text="개설일자"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_academy_price" />
+
+                <TextView
+                    android:paddingVertical="10dp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/tv_academy_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/edit_auth_background"
+                    android:fontFamily="@font/pretendard_regular"
+                    tools:text="2021.07.09"
+                    android:singleLine="true"
+                    android:paddingHorizontal="18dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:textSize="14sp"
+                    app:layout_constraintDimensionRatio="W, 21:151"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_academy_date_title" />
+
+                <TextView
+                    android:id="@+id/tv_academy_count_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:text="정원합계"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_academy_date" />
+
+                <TextView
+                    android:paddingVertical="10dp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/tv_academy_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/edit_auth_background"
+                    android:fontFamily="@font/pretendard_regular"
+                    tools:text="36"
+                    android:singleLine="true"
+                    android:paddingHorizontal="18dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:textSize="14sp"
+                    app:layout_constraintDimensionRatio="W, 21:151"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_academy_count_title" />
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+
+
+</layout>
