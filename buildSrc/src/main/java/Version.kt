@@ -37,6 +37,4 @@ object Version {
 
     const val RETROFIT = "2.9.0"
     const val OKHTTP = "4.9.0"
-
-    //const val TAB = "28.0.0"
 }

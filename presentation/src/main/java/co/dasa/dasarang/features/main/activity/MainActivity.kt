@@ -7,7 +7,6 @@ import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import co.dasa.dasarang.R
 import co.dasa.dasarang.base.BaseActivity
@@ -21,24 +20,14 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
     override val viewModel: MainViewModel by viewModels()
     private lateinit var navController: NavController
 
-    private var backpressedTime: Long = 0
-
     override fun start() {
         setNavigation()
     }
 
     private fun setNavigation() {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.fcv_main) as NavHostFragment
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fcv_main) as NavHostFragment
         navController = navHostFragment.navController
-        binding.bnvMain.apply {
-            setupWithNavController(navController)
-            setOnItemSelectedListener { item ->
-                NavigationUI.onNavDestinationSelected(item, navController)
-                navController.popBackStack(item.itemId, inclusive = false)
-                true
-            }
-        }
+        binding.bnvMain.setupWithNavController(navController)
     }
 
     fun setNavVisible(demand: Boolean) {
@@ -49,29 +38,5 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
         val window: Window = window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.statusBarColor = Color.parseColor(color)
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        if (System.currentTimeMillis() > backpressedTime + 2000) {
-            backpressedTime = System.currentTimeMillis()
-            // shortToast("\'뒤로\' 버튼을 한번 더 누르시면 종료됩니다.")
-        } else if (System.currentTimeMillis() <= backpressedTime + 2000) {
-            finish()
-        }
-        /*val fragment = supportFragmentManager.findFragmentById(R.id.fcv_main)
-        Log.d("testasd", "$fragment")
-        if (fragment is PlazaFragment) {
-            super.onBackPressed()
-        } else if (fragment is NewsFragment) {
-            navController.navigate(R.id.main_plaza)
-        } else {
-            if (System.currentTimeMillis() > backpressedTime + 2000) {
-                backpressedTime = System.currentTimeMillis()
-                shortToast("\'뒤로\' 버튼을 한번 더 누르시면 종료됩니다.")
-            } else if (System.currentTimeMillis() <= backpressedTime + 2000) {
-                finish()
-            }
-        }*/
     }
 }
